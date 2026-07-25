@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard Ejecutivo Pro - Analizador de Bitácoras</title>
+    <!-- Tailwind CSS: compilado para producción (reemplaza al CDN de Tailwind) -->
+    <style>
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\!container{max-width:1536px!important}.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.bottom-0{bottom:0}.left-0{left:0}.left-1\/2{left:50%}.left-3{left:.75rem}.right-0{right:0}.top-0{top:0}.top-1{top:.25rem}.top-1\/2{top:50%}.top-4{top:1rem}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.z-\[60\]{z-index:60}.col-span-full{grid-column:1/-1}.-mx-4{margin-left:-1rem;margin-right:-1rem}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:.5rem;margin-bottom:.5rem}.mb-0{margin-bottom:0}.mb-0\.5{margin-bottom:.125rem}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.ml-2{margin-left:.5rem}.mr-1{margin-right:.25rem}.mr-1\.5{margin-right:.375rem}.mt-0{margin-top:0}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-1{height:.25rem}.h-1\.5{height:.375rem}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-2{height:.5rem}.h-2\.5{height:.625rem}.h-3{height:.75rem}.h-4{height:1rem}.h-56{height:14rem}.h-64{height:16rem}.h-8{height:2rem}.h-full{height:100%}.h-px{height:1px}.max-h-\[90vh\]{max-height:90vh}.min-h-\[38px\]{min-height:38px}.w-1{width:.25rem}.w-1\.5{width:.375rem}.w-10{width:2.5rem}.w-2{width:.5rem}.w-2\.5{width:.625rem}.w-3{width:.75rem}.w-4{width:1rem}.w-8{width:2rem}.w-fit{width:-moz-fit-content;width:fit-content}.w-full{width:100%}.min-w-0{min-width:0}.min-w-\[620px\]{min-width:620px}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.flex-1{flex:1 1 0%}.flex-none{flex:none}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%}.-translate-x-1\/2,.-translate-y-1{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1{--tw-translate-y:-0.25rem}.-translate-y-1\/2{--tw-translate-y:-50%}.-translate-y-1\/2,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.touch-pan-x{--tw-pan-x:pan-x;touch-action:var(--tw-pan-x) var(--tw-pan-y) var(--tw-pinch-zoom)}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.space-y-0>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px*var(--tw-space-y-reverse))}.space-y-0\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.125rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.125rem*var(--tw-space-y-reverse))}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-slate-100>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(241 245 249/var(--tw-divide-opacity,1))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.overflow-x-hidden{overflow-x:hidden}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.rounded-l-lg{border-top-left-radius:.5rem;border-bottom-left-radius:.5rem}.rounded-r-lg{border-top-right-radius:.5rem;border-bottom-right-radius:.5rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-amber-100{--tw-border-opacity:1;border-color:rgb(254 243 199/var(--tw-border-opacity,1))}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138/var(--tw-border-opacity,1))}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254/var(--tw-border-opacity,1))}.border-brand-100{--tw-border-opacity:1;border-color:rgb(224 242 254/var(--tw-border-opacity,1))}.border-brand-500{--tw-border-opacity:1;border-color:rgb(2 132 199/var(--tw-border-opacity,1))}.border-brand-600{--tw-border-opacity:1;border-color:rgb(3 105 161/var(--tw-border-opacity,1))}.border-brand-700{--tw-border-opacity:1;border-color:rgb(7 89 133/var(--tw-border-opacity,1))}.border-brand-700\/50{border-color:rgba(7,89,133,.5)}.border-emerald-100{--tw-border-opacity:1;border-color:rgb(209 250 229/var(--tw-border-opacity,1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208/var(--tw-border-opacity,1))}.border-purple-100{--tw-border-opacity:1;border-color:rgb(243 232 255/var(--tw-border-opacity,1))}.border-rose-100{--tw-border-opacity:1;border-color:rgb(255 228 230/var(--tw-border-opacity,1))}.border-rose-200{--tw-border-opacity:1;border-color:rgb(254 205 211/var(--tw-border-opacity,1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249/var(--tw-border-opacity,1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.border-transparent{border-color:transparent}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255/var(--tw-border-opacity,1))}.border-white\/10{border-color:hsla(0,0%,100%,.1)}.border-white\/20{border-color:hsla(0,0%,100%,.2)}.border-l-amber-500{--tw-border-opacity:1;border-left-color:rgb(245 158 11/var(--tw-border-opacity,1))}.border-l-emerald-500{--tw-border-opacity:1;border-left-color:rgb(16 185 129/var(--tw-border-opacity,1))}.border-l-rose-500{--tw-border-opacity:1;border-left-color:rgb(244 63 94/var(--tw-border-opacity,1))}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235/var(--tw-bg-opacity,1))}.bg-amber-50\/60{background-color:rgba(255,251,235,.6)}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11/var(--tw-bg-opacity,1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255/var(--tw-bg-opacity,1))}.bg-blue-900{--tw-bg-opacity:1;background-color:rgb(30 58 138/var(--tw-bg-opacity,1))}.bg-brand-50{--tw-bg-opacity:1;background-color:rgb(240 249 255/var(--tw-bg-opacity,1))}.bg-brand-50\/30{background-color:rgba(240,249,255,.3)}.bg-brand-500{--tw-bg-opacity:1;background-color:rgb(2 132 199/var(--tw-bg-opacity,1))}.bg-brand-600{--tw-bg-opacity:1;background-color:rgb(3 105 161/var(--tw-bg-opacity,1))}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229/var(--tw-bg-opacity,1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245/var(--tw-bg-opacity,1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255/var(--tw-bg-opacity,1))}.bg-rose-100{--tw-bg-opacity:1;background-color:rgb(255 228 230/var(--tw-bg-opacity,1))}.bg-rose-50{--tw-bg-opacity:1;background-color:rgb(255 241 242/var(--tw-bg-opacity,1))}.bg-rose-500{--tw-bg-opacity:1;background-color:rgb(244 63 94/var(--tw-bg-opacity,1))}.bg-rose-600{--tw-bg-opacity:1;background-color:rgb(225 29 72/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.bg-slate-200\/60{background-color:rgba(226,232,240,.6)}.bg-slate-400{--tw-bg-opacity:1;background-color:rgb(148 163 184/var(--tw-bg-opacity,1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.bg-slate-50\/80{background-color:rgba(248,250,252,.8)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-900\/60{background-color:rgba(15,23,42,.6)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/10{background-color:hsla(0,0%,100%,.1)}.bg-white\/95{background-color:hsla(0,0%,100%,.95)}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-brand-900{--tw-gradient-from:#0c4a6e var(--tw-gradient-from-position);--tw-gradient-to:rgba(12,74,110,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-slate-900{--tw-gradient-from:#0f172a var(--tw-gradient-from-position);--tw-gradient-to:rgba(15,23,42,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-brand-900{--tw-gradient-to:rgba(12,74,110,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#0c4a6e var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-slate-900{--tw-gradient-to:rgba(15,23,42,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#0f172a var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-brand-900{--tw-gradient-to:#0c4a6e var(--tw-gradient-to-position)}.to-slate-900{--tw-gradient-to:#0f172a var(--tw-gradient-to-position)}.p-2{padding:.5rem}.p-2\.5{padding:.625rem}.p-3{padding:.75rem}.p-3\.5{padding:.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-1\.5{padding-left:.375rem;padding-right:.375rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0{padding-top:0;padding-bottom:0}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:.5rem}.pb-28{padding-bottom:7rem}.pl-1{padding-left:.25rem}.pl-2{padding-left:.5rem}.pl-9{padding-left:2.25rem}.pr-3{padding-right:.75rem}.pt-2{padding-top:.5rem}.pt-2\.5{padding-top:.625rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.font-sans{font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.normal-case{text-transform:none}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77/var(--tw-text-opacity,1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9/var(--tw-text-opacity,1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14/var(--tw-text-opacity,1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15/var(--tw-text-opacity,1))}.text-blue-900{--tw-text-opacity:1;color:rgb(30 58 138/var(--tw-text-opacity,1))}.text-brand-600{--tw-text-opacity:1;color:rgb(3 105 161/var(--tw-text-opacity,1))}.text-brand-700{--tw-text-opacity:1;color:rgb(7 89 133/var(--tw-text-opacity,1))}.text-brand-900{--tw-text-opacity:1;color:rgb(12 74 110/var(--tw-text-opacity,1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105/var(--tw-text-opacity,1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87/var(--tw-text-opacity,1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70/var(--tw-text-opacity,1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234/var(--tw-text-opacity,1))}.text-purple-700{--tw-text-opacity:1;color:rgb(126 34 206/var(--tw-text-opacity,1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94/var(--tw-text-opacity,1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72/var(--tw-text-opacity,1))}.text-rose-700{--tw-text-opacity:1;color:rgb(190 18 60/var(--tw-text-opacity,1))}.text-rose-800{--tw-text-opacity:1;color:rgb(159 18 57/var(--tw-text-opacity,1))}.text-rose-900{--tw-text-opacity:1;color:rgb(136 19 55/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-300{transition-duration:.3s}.ease-out{transition-timing-function:cubic-bezier(0,0,.2,1)}.selection\:bg-brand-500 ::-moz-selection{--tw-bg-opacity:1;background-color:rgb(2 132 199/var(--tw-bg-opacity,1))}.selection\:bg-brand-500 ::selection{--tw-bg-opacity:1;background-color:rgb(2 132 199/var(--tw-bg-opacity,1))}.selection\:text-white ::-moz-selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.selection\:text-white ::selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.selection\:bg-brand-500::-moz-selection{--tw-bg-opacity:1;background-color:rgb(2 132 199/var(--tw-bg-opacity,1))}.selection\:bg-brand-500::selection{--tw-bg-opacity:1;background-color:rgb(2 132 199/var(--tw-bg-opacity,1))}.selection\:text-white::-moz-selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.hover\:border-blue-900:hover{--tw-border-opacity:1;border-color:rgb(30 58 138/var(--tw-border-opacity,1))}.hover\:border-brand-500:hover{--tw-border-opacity:1;border-color:rgb(2 132 199/var(--tw-border-opacity,1))}.hover\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.hover\:bg-brand-50\/30:hover{background-color:rgba(240,249,255,.3)}.hover\:bg-brand-700:hover{--tw-bg-opacity:1;background-color:rgb(7 89 133/var(--tw-bg-opacity,1))}.hover\:bg-emerald-100:hover{--tw-bg-opacity:1;background-color:rgb(209 250 229/var(--tw-bg-opacity,1))}.hover\:bg-rose-100:hover{--tw-bg-opacity:1;background-color:rgb(255 228 230/var(--tw-bg-opacity,1))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.hover\:bg-slate-300:hover{--tw-bg-opacity:1;background-color:rgb(203 213 225/var(--tw-bg-opacity,1))}.hover\:bg-slate-50\/80:hover{background-color:rgba(248,250,252,.8)}.hover\:bg-slate-800:hover{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.hover\:bg-white\/20:hover{background-color:hsla(0,0%,100%,.2)}.hover\:text-slate-800:hover{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus\:border-brand-500:focus{--tw-border-opacity:1;border-color:rgb(2 132 199/var(--tw-border-opacity,1))}.focus\:bg-white:focus{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width:640px){.sm\:mx-0{margin-left:0;margin-right:0}.sm\:mr-1\.5{margin-right:.375rem}.sm\:mt-0{margin-top:0}.sm\:inline{display:inline}.sm\:h-12{height:3rem}.sm\:h-16{height:4rem}.sm\:h-64{height:16rem}.sm\:h-72{height:18rem}.sm\:w-12{width:3rem}.sm\:w-auto{width:auto}.sm\:flex-initial{flex:0 1 auto}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-center{justify-content:center}.sm\:gap-3{gap:.75rem}.sm\:gap-4{gap:1rem}.sm\:gap-6{gap:1.5rem}.sm\:space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}.sm\:border-l{border-left-width:1px}.sm\:border-t-0{border-top-width:0}.sm\:p-2\.5{padding:.625rem}.sm\:p-4{padding:1rem}.sm\:p-5{padding:1.25rem}.sm\:p-6{padding:1.5rem}.sm\:px-0{padding-left:0;padding-right:0}.sm\:px-3{padding-left:.75rem;padding-right:.75rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.sm\:py-6{padding-top:1.5rem;padding-bottom:1.5rem}.sm\:pl-4{padding-left:1rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:.875rem;line-height:1.25rem}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}.sm\:text-xs{font-size:.75rem;line-height:1rem}}@media (min-width:768px){.md\:w-72{width:18rem}.md\:w-auto{width:auto}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:flex-row{flex-direction:row}.md\:justify-end{justify-content:flex-end}}@media (min-width:1024px){.lg\:col-span-2{grid-column:span 2/span 2}.lg\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}
+    </style>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Mammoth.js CDN (lectura de archivos .docx en el navegador) -->
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.7.0/mammoth.browser.min.js"></script>
+    <style>
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            touch-action: pan-y;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .led-green { box-shadow: 0 0 8px #22c55e; }
+        .led-yellow { box-shadow: 0 0 8px #eab308; }
+        .led-red { box-shadow: 0 0 8px #ef4444; }
+        .bg-slate-400 { background-color: #94a3b8; }
+
+        /* ===== Estilos de Impresión / Guardar como PDF ===== */
+        @media print {
+            html, body { background: #ffffff !important; height: auto !important; }
+            nav, #header-action-buttons, #banner-carga-directa, #barra-busqueda-filtros, #selector-dias,
+            #modal-carga-bitacora, #modal-integrante {
+                display: none !important;
+            }
+            main { padding-bottom: 0 !important; }
+            .shadow-xs, .shadow-sm, .shadow-md, .shadow-2xl { box-shadow: none !important; }
+            .card-item { break-inside: avoid; page-break-inside: avoid; }
+            table { break-inside: auto; }
+            tr { break-inside: avoid; }
+            canvas { max-width: 100% !important; }
+            a[href]::after { content: none !important; }
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-modal {
+            animation: modalFadeIn 0.2s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="h-full text-slate-800 antialiased flex flex-col bg-slate-50 selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs flex-none">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-14 sm:h-16 items-center gap-2">
+                <!-- Branding -->
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="bg-brand-600 text-white p-2 rounded-xl shadow-xs shrink-0">
+                        <i class="fa-solid fa-gauge-high text-lg sm:text-xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight truncate">Dashboard Operativo Pro</h1>
+                        <p class="text-[11px] sm:text-xs text-slate-500 font-medium truncate">Análisis Inteligente • Semáforo • Reporte Detallado</p>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div id="header-action-buttons" class="flex items-center gap-2 shrink-0">
+                    <button onclick="abrirConfigurarIA()" class="p-2 sm:px-3 sm:py-1.5 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition shadow-xs flex items-center gap-1.5" title="Configurar IA de Gemini">
+                        <i class="fa-solid fa-robot"></i>
+                        <span class="hidden sm:inline">IA</span>
+                    </button>
+                    <button onclick="abrirModalCarga()" class="px-3 py-1.5 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl transition shadow-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>Cargar Bitácora</span>
+                    </button>
+                    <button onclick="imprimirDashboard()" class="p-2 sm:px-3 sm:py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-print"></i>
+                        <span class="hidden sm:inline">Imprimir / PDF</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 pb-28 overflow-x-hidden">
+
+        <!-- Banner de Carga Directa -->
+        <div id="banner-carga-directa" class="bg-gradient-to-r from-brand-900 via-slate-900 to-brand-900 text-white p-3.5 sm:p-4 rounded-2xl shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 border border-brand-700/50">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-white/10 rounded-xl shrink-0">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-300 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs sm:text-sm font-bold">Lector Inteligente de Bitácoras</h2>
+                    <p class="text-[11px] text-slate-300">Carga un archivo .txt o pega el texto en bruto para procesar cualquier departamento automáticamente.</p>
+                </div>
+            </div>
+            <div class="flex gap-2 w-full sm:w-auto shrink-0">
+                <button onclick="abrirModalCarga()" class="w-full sm:w-auto px-3 py-1.5 bg-white text-slate-900 font-bold text-xs rounded-xl hover:bg-slate-100 transition text-center">
+                    <i class="fa-solid fa-upload mr-1"></i> Subir / Pegar Texto
+                </button>
+                <button onclick="restaurarDatosPreterminados()" class="px-2.5 py-1.5 bg-white/10 text-white font-medium text-xs rounded-xl hover:bg-white/20 transition" title="Reiniciar y cargar la bitácora de otra semana">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Búsqueda Global y Filtro Semáforo -->
+        <div id="barra-busqueda-filtros" class="bg-white p-3 rounded-2xl border border-slate-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+            <div class="relative w-full md:w-72">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" id="input-busqueda" onkeyup="filtrarIntegrantes()" placeholder="Buscar persona, marca o tarea..." class="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-brand-500 focus:bg-white transition">
+            </div>
+
+            <!-- Botones Filtros Semáforo -->
+            <div class="flex items-center gap-1.5 w-full md:w-auto justify-between md:justify-end overflow-x-auto no-scrollbar">
+                <span class="text-slate-400 font-bold uppercase text-[10px] mr-1 shrink-0">Semáforo:</span>
+                <button onclick="filtrarPorSemaforo('todos')" id="filter-sem-todos" class="btn-sem-filter active px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold transition">Todos</button>
+                <button onclick="filtrarPorSemaforo('green')" id="filter-sem-green" class="btn-sem-filter px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold hover:bg-emerald-100 transition flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 🟢 Óptimo
+                </button>
+                <button onclick="filtrarPorSemaforo('yellow')" id="filter-sem-yellow" class="btn-sem-filter px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 font-semibold hover:bg-amber-100 transition flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span> 🟡 Alerta
+                </button>
+                <button onclick="filtrarPorSemaforo('red')" id="filter-sem-red" class="btn-sem-filter px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800 border border-rose-200 font-semibold hover:bg-rose-100 transition flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-rose-500"></span> 🔴 Crítico
+                </button>
+            </div>
+        </div>
+
+        <!-- Selector de Días -->
+        <section id="selector-dias" class="bg-white p-2 sm:p-2.5 rounded-2xl border border-slate-200 shadow-xs">
+            <div class="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar touch-pan-x">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider pl-2 shrink-0 hidden sm:inline">
+                    <i class="fa-regular fa-calendar-check mr-1"></i>Jornada:
+                </span>
+                <div class="flex items-center gap-1.5 w-full sm:w-auto justify-between sm:justify-start">
+                    <button onclick="filtrarDia('todos')" id="btn-dia-todos" class="btn-dia active min-h-[38px] flex-1 sm:flex-initial text-xs font-bold px-3 py-1.5 rounded-xl bg-brand-600 text-white shadow-xs transition whitespace-nowrap">Todos</button>
+                    <button onclick="filtrarDia('lunes')" id="btn-dia-lunes" class="btn-dia min-h-[38px] flex-1 sm:flex-initial text-xs font-medium px-3 py-1.5 rounded-xl text-slate-600 hover:bg-slate-100 transition whitespace-nowrap flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span> Lun 20
+                    </button>
+                    <button onclick="filtrarDia('martes')" id="btn-dia-martes" class="btn-dia min-h-[38px] flex-1 sm:flex-initial text-xs font-medium px-3 py-1.5 rounded-xl text-slate-600 hover:bg-slate-100 transition whitespace-nowrap flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span> Mar 21
+                    </button>
+                    <button onclick="filtrarDia('miercoles')" id="btn-dia-miercoles" class="btn-dia min-h-[38px] flex-1 sm:flex-initial text-xs font-medium px-3 py-1.5 rounded-xl text-slate-600 hover:bg-slate-100 transition whitespace-nowrap flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-rose-500"></span> Mié 22
+                    </button>
+                    <button onclick="filtrarDia('jueves')" id="btn-dia-jueves" class="btn-dia min-h-[38px] flex-1 sm:flex-initial text-xs font-medium px-3 py-1.5 rounded-xl text-slate-600 hover:bg-slate-100 transition whitespace-nowrap flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Jue 23
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner contextual -->
+        <div id="banner-dia" class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white p-4 rounded-2xl shadow-xs flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div id="banner-led-container" class="p-2.5 bg-white/10 rounded-xl shrink-0 border border-white/20">
+                    <span id="banner-led" class="w-4 h-4 rounded-full bg-emerald-500 block led-green"></span>
+                </div>
+                <div class="min-w-0">
+                    <h2 id="titulo-banner-dia" class="text-sm sm:text-base font-bold truncate">Vista Semanal Acumulada</h2>
+                    <p id="subtitulo-banner-dia" class="text-xs text-slate-300 truncate">Consolidado general de actividades de los 5 departamentos</p>
+                    <span id="badge-status-general" class="inline-flex items-center px-2 py-0.5 mt-1 rounded-full text-[10px] font-bold border bg-emerald-100 text-emerald-800 border-emerald-200">
+                        <span class="w-2 h-2 mr-1.5 rounded-full bg-emerald-500 led-green"></span>
+                        <span id="text-status-general">Semana Cumplida (90%)</span>
+                    </span>
+                </div>
+            </div>
+            <div id="stats-banner-dia" class="grid grid-cols-3 gap-2 border-t sm:border-t-0 sm:border-l border-white/10 pt-2.5 sm:pt-0 sm:pl-4 text-center sm:text-left">
+                <div>
+                    <span class="text-slate-400 block text-[9px] uppercase font-bold">Gráficas</span>
+                    <span id="stat-banner-graficas" class="text-base sm:text-lg font-bold text-white">26</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 block text-[9px] uppercase font-bold">Videos</span>
+                    <span id="stat-banner-videos" class="text-base sm:text-lg font-bold text-white">19</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 block text-[9px] uppercase font-bold">Copys</span>
+                    <span id="stat-banner-copys" class="text-base sm:text-lg font-bold text-white">33+</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: TODOS LOS EQUIPOS JUNTOS -->
+        <div id="content-todos" class="tab-content hidden space-y-4">
+            <div class="flex justify-between items-center bg-white p-3 rounded-2xl border border-slate-200 text-xs">
+                <span class="text-slate-500 font-medium">Vista completa: todos los equipos e integrantes en una sola pantalla</span>
+                <span class="font-bold text-brand-600"><i class="fa-solid fa-hand-pointer mr-1"></i>Clic en una tarjeta para el detalle</span>
+            </div>
+            <div id="contenedor-cards-todos" class="space-y-6"></div>
+        </div>
+
+        <!-- TAB CONTENT: RESUMEN GENERAL -->
+        <div id="content-resumen" class="tab-content space-y-4 sm:space-y-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                <div class="bg-white p-3.5 sm:p-5 rounded-2xl border-l-4 border-l-emerald-500 border border-slate-200 shadow-xs flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Diseño Visual</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 led-green"></span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 id="metric-graficas" class="text-2xl sm:text-3xl font-extrabold text-slate-900">26</h3>
+                        <p class="text-[11px] text-emerald-600 font-medium mt-0.5 truncate">🟢 Posts, Banners y Cajas</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3.5 sm:p-5 rounded-2xl border-l-4 border-l-amber-500 border border-slate-200 shadow-xs flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Videos Editados</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500 led-yellow"></span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 id="metric-videos" class="text-2xl sm:text-3xl font-extrabold text-slate-900">19</h3>
+                        <p class="text-[11px] text-amber-600 font-medium mt-0.5 truncate">🟡 Retraso por cortes/HW</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3.5 sm:p-5 rounded-2xl border-l-4 border-l-emerald-500 border border-slate-200 shadow-xs flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Community & PR</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 led-green"></span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 id="metric-copys" class="text-2xl sm:text-3xl font-extrabold text-slate-900">33+</h3>
+                        <p class="text-[11px] text-emerald-600 font-medium mt-0.5 truncate">🟢 12 Marcas Mantenidas</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3.5 sm:p-5 rounded-2xl border-l-4 border-l-rose-500 border border-slate-200 shadow-xs flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Horas Perdidas</span>
+                        <span id="led-horas-perdidas" class="w-2.5 h-2.5 rounded-full bg-rose-500 led-red"></span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 id="metric-horas" class="text-2xl sm:text-3xl font-extrabold text-slate-900">~5.5 h</h3>
+                        <p id="metric-horas-subtitulo" class="text-[11px] text-rose-600 font-medium mt-0.5 truncate">🔴 Apagones / Sin Bitácora Dev</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div class="lg:col-span-2 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+                    <div class="flex justify-between items-center mb-3">
+                        <div>
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900">Producción Entregada</h3>
+                            <p class="text-xs text-slate-500">Volumen acumulado por tipo de entregable</p>
+                        </div>
+                    </div>
+                    <div class="relative w-full h-56 sm:h-64">
+                        <canvas id="chartProduccion"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+                    <div class="mb-3">
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900">Carga por Área</h3>
+                        <p class="text-xs text-slate-500">Distribución porcentual del trabajo</p>
+                    </div>
+                    <div class="relative w-full h-56 sm:h-64 flex items-center justify-center">
+                        <canvas id="chartDepartamentos"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: MATRIZ SEMÁFORO -->
+        <div id="content-rendimiento" class="tab-content hidden space-y-4 sm:space-y-6">
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+                <h2 class="text-base sm:text-lg font-bold text-slate-900">Matriz Semafórica de Rendimiento</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Haz clic en cualquier departamento o integrante para abrir su reporte detallado.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-2">Radar Semafórico</h3>
+                    <div class="relative w-full h-64 sm:h-72">
+                        <canvas id="chartRadarRendimiento"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-2">Totales por Departamento</h3>
+                    <div class="relative w-full h-64 sm:h-72">
+                        <canvas id="chartBarrasDeptos"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: DISEÑADORES -->
+        <div id="content-diseno" class="tab-content hidden space-y-4">
+            <div class="flex justify-between items-center bg-white p-3 rounded-2xl border border-slate-200 text-xs">
+                <span class="text-slate-500 font-medium">Haz clic en una tarjeta para desplegar el desglose diario del diseñador</span>
+                <span class="font-bold text-blue-900"><i class="fa-solid fa-hand-pointer mr-1"></i>Clic para abrir pop-up</span>
+            </div>
+            <div id="contenedor-cards-diseno" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- TAB CONTENT: EDITORES -->
+        <div id="content-editores" class="tab-content hidden space-y-4">
+            <div class="flex justify-between items-center bg-white p-3 rounded-2xl border border-slate-200 text-xs">
+                <span class="text-slate-500 font-medium">Haz clic en una tarjeta para ver el tiempo de rodajes y proyectos</span>
+                <span class="font-bold text-brand-600"><i class="fa-solid fa-hand-pointer mr-1"></i>Clic para abrir pop-up</span>
+            </div>
+            <div id="contenedor-cards-editores" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- TAB CONTENT: COMMUNITY & PR -->
+        <div id="content-community" class="tab-content hidden space-y-4">
+            <div class="flex justify-between items-center bg-white p-3 rounded-2xl border border-slate-200 text-xs">
+                <span class="text-slate-500 font-medium">Haz clic para consultar grillas, copys redactados y gestión de creadores</span>
+                <span class="font-bold text-brand-600"><i class="fa-solid fa-hand-pointer mr-1"></i>Clic para abrir pop-up</span>
+            </div>
+            <div id="contenedor-cards-community" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </div>
+
+        <!-- TAB CONTENT: MERCADEO -->
+        <div id="content-mercadeo" class="tab-content hidden space-y-4">
+            <div id="contenedor-cards-mercadeo" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+
+        <!-- TAB CONTENT: PROGRAMACIÓN -->
+        <div id="content-programacion" class="tab-content hidden space-y-4">
+            <div id="contenedor-cards-programacion" class="grid grid-cols-1 gap-4"></div>
+        </div>
+
+        <!-- TAB CONTENT: INCIDENCIAS SEMAFÓRICAS -->
+        <div id="content-incidencias" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                    <h2 class="text-base font-bold text-slate-900">Control Semafórico de Incidentes</h2>
+                    <select id="select-cat-incidencia" onchange="filtrarTablaIncidenciasPorCat()" class="bg-slate-50 border border-slate-200 rounded-xl text-xs px-3 py-1.5 focus:outline-none focus:border-brand-500">
+                        <option value="todas">Todas las Categorías</option>
+                        <option value="Energía">⚡ Energía / Luz</option>
+                        <option value="Hardware">💻 Hardware / PC</option>
+                        <option value="Software">🛠️ Software / Apps</option>
+                        <option value="Producción">🍳 Producción / Insumos</option>
+                        <option value="Logística">📦 Logística / MRW</option>
+                        <option value="IA">🤖 Inteligencia Artificial</option>
+                        <option value="Administración">📋 Administración</option>
+                    </select>
+                </div>
+                
+                <div class="overflow-x-auto custom-scrollbar -mx-4 sm:mx-0 px-4 sm:px-0">
+                    <table class="w-full min-w-[620px] text-left text-xs text-slate-600">
+                        <thead class="bg-slate-100 text-slate-700 uppercase text-[10px] font-bold">
+                            <tr>
+                                <th class="p-2.5 rounded-l-lg">Estado</th>
+                                <th class="p-2.5">Día</th>
+                                <th class="p-2.5">Categoría</th>
+                                <th class="p-2.5">Detalle del Problema</th>
+                                <th class="p-2.5">Afectados</th>
+                                <th class="p-2.5 rounded-r-lg">Plan de Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-incidencias-body" class="divide-y divide-slate-100"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- BARRA DE NAVEGACIÓN PRINCIPAL PERSISTENTE (SIEMPRE VISIBLE ABAJO) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 px-2 py-2 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex items-center justify-between sm:justify-center gap-1 sm:gap-3 overflow-x-auto no-scrollbar">
+            <button onclick="switchTab('resumen')" id="mobile-nav-resumen" class="mobile-nav-btn active flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-brand-600 transition shrink-0">
+                <i class="fa-solid fa-grip text-sm sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Inicio</span>
+            </button>
+            <button onclick="switchTab('todos')" id="mobile-nav-todos" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-users text-sm sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Todos</span>
+            </button>
+            <button onclick="switchTab('diseno')" id="mobile-nav-diseno" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-pen-nib text-sm text-blue-900 sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Diseñadores</span>
+            </button>
+            <button onclick="switchTab('editores')" id="mobile-nav-editores" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-video text-sm text-purple-600 sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Editores</span>
+            </button>
+            <button onclick="switchTab('community')" id="mobile-nav-community" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-bullhorn text-sm text-amber-600 sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Community & PR</span>
+            </button>
+            <button onclick="switchTab('mercadeo')" id="mobile-nav-mercadeo" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-chart-line text-sm text-emerald-600 sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Mercadeo</span>
+            </button>
+            <button onclick="switchTab('programacion')" id="mobile-nav-programacion" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-code text-sm text-rose-600 sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Dev</span>
+            </button>
+            <button onclick="switchTab('rendimiento')" id="mobile-nav-rendimiento" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-chart-pie text-sm text-brand-600 sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Matriz</span>
+            </button>
+            <button onclick="switchTab('incidencias')" id="mobile-nav-incidencias" class="mobile-nav-btn flex flex-col sm:flex-row items-center justify-center py-1 px-2 sm:px-3 rounded-xl hover:bg-slate-100 text-slate-500 transition shrink-0">
+                <i class="fa-solid fa-triangle-exclamation text-sm text-rose-500 sm:mr-1.5"></i>
+                <span class="text-[10px] sm:text-xs font-bold mt-0.5 sm:mt-0">Fallos</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MODAL CARGA Y LECTURA DE BITÁCORAS -->
+    <div id="modal-carga-bitacora" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden animate-modal">
+            
+            <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-brand-600 text-white flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900">Cargar Nuevas Bitácoras</h3>
+                        <p class="text-xs text-slate-500">Sube un archivo de texto o pega directamente la bitácora en bruto</p>
+                    </div>
+                </div>
+                <button onclick="cerrarModalCarga()" class="w-8 h-8 rounded-full bg-slate-200/60 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 custom-scrollbar text-xs">
+                <!-- Dropzone Subir Archivo -->
+                <div id="dropzone-bitacora" class="border-2 border-dashed border-slate-300 hover:border-brand-500 rounded-2xl p-5 text-center bg-slate-50 hover:bg-brand-50/30 transition cursor-pointer" onclick="document.getElementById('input-file-bitacora').click()" ondragover="permitirDropBitacora(event)" ondragleave="salirDropBitacora(event)" ondrop="soltarArchivoBitacora(event)">
+                    <input type="file" id="input-file-bitacora" accept=".txt,.md,.log,.csv,.docx" onchange="leerArchivoBitacora(event)" class="hidden">
+                    <i class="fa-solid fa-cloud-arrow-up text-3xl text-brand-600 mb-2"></i>
+                    <p id="texto-dropzone" class="font-bold text-slate-800 text-xs">Haz clic o arrastra un archivo de texto aquí</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Soporta .txt, .md, .docx o archivos planos (los .doc antiguos: copia y pega el texto abajo)</p>
+                </div>
+
+                <div class="flex items-center gap-2 my-2">
+                    <div class="h-px bg-slate-200 flex-1"></div>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">O pega el texto directo</span>
+                    <div class="h-px bg-slate-200 flex-1"></div>
+                </div>
+
+                <!-- Textarea Texto Directo -->
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1 text-xs">Texto de la Bitácora:</label>
+                    <textarea id="textarea-bitacora" rows="8" placeholder="Pega aquí el contenido completo de las bitácoras (Diseñadores, Editores, CM, etc.)..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-mono focus:outline-none focus:border-brand-500 focus:bg-white transition custom-scrollbar"></textarea>
+                </div>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                <button onclick="restaurarDatosPreterminados()" class="text-slate-500 hover:text-slate-800 font-bold text-xs">
+                    Restaurar Predeterminado
+                </button>
+                <div class="flex gap-2">
+                    <button onclick="cerrarModalCarga()" class="px-3.5 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs hover:bg-slate-300 transition">
+                        Cancelar
+                    </button>
+                    <button onclick="procesarBitacoraIngresada()" class="px-4 py-2 rounded-xl bg-brand-600 text-white font-bold text-xs hover:bg-brand-700 transition flex items-center gap-1.5 shadow-sm">
+                        <i class="fa-solid fa-bolt"></i> Leer & Procesar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL / POP-UP DETALLADO -->
+    <div id="modal-integrante" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden animate-modal">
+            
+            <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
+                <div class="flex items-center gap-3">
+                    <div id="modal-avatar" class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center font-extrabold text-lg shadow-sm shrink-0">
+                        S
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 id="modal-nombre" class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Nombre Integrante</h3>
+                            <span id="modal-score-badge" class="px-2 py-0.5 text-[10px] font-bold border rounded-full bg-emerald-100 text-emerald-800 border-emerald-200">
+                                🟢 95%
+                            </span>
+                        </div>
+                        <p id="modal-rol" class="text-xs text-slate-500 font-medium">Rol / Departamento</p>
+                    </div>
+                </div>
+                <button onclick="cerrarModal()" class="w-8 h-8 rounded-full bg-slate-200/60 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 custom-scrollbar text-xs">
+                
+                <div class="bg-slate-100 p-2.5 rounded-xl flex items-center justify-between text-slate-600 font-mono text-[11px] truncate">
+                    <span class="truncate"><i class="fa-solid fa-server mr-1.5 text-slate-400"></i><span id="modal-ruta">M:\Bitacoras\...</span></span>
+                    <button onclick="copiarRuta()" class="text-brand-600 hover:text-brand-800 text-xs font-sans font-bold shrink-0 ml-2">Copiar</button>
+                </div>
+
+                <div class="bg-brand-50 p-3 rounded-xl border border-brand-100 text-brand-900">
+                    <span class="font-bold block mb-1 uppercase tracking-wider text-[10px] text-brand-700">Resumen Ejecutivo Semanal:</span>
+                    <p id="modal-resumen-semanal" class="leading-relaxed">Detalle sobre el rol y entregables alcanzados.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-regular fa-calendar text-brand-600"></i> Desglose Diario de Actividades:
+                    </h4>
+                    <div id="modal-dias-container" class="space-y-2"></div>
+                </div>
+
+                <div class="p-3 rounded-2xl border border-amber-200 bg-amber-50/60 space-y-1">
+                    <span class="font-bold text-amber-900 block flex items-center gap-1.5">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Cuellos de Botella / Incidencias:
+                    </span>
+                    <p id="modal-incidencia-texto" class="text-amber-800 text-[11px] leading-relaxed">Sin incidencias mayores registradas.</p>
+                </div>
+
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                <span class="text-[10px] text-slate-400 font-medium">Usa <kbd class="px-1.5 py-0.5 bg-slate-200 rounded text-slate-700 font-mono">Esc</kbd> para salir</span>
+                <button onclick="cerrarModal()" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition">
+                    Cerrar Ficha
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Data Store Inicial y Lógica JS con Parser -->
+    <script>
+        // ============================================================================
+        // CONFIGURA TU API KEY DE GEMINI AQUÍ UNA SOLA VEZ (y listo, queda activa siempre,
+        // para cualquiera que abra este archivo — no hace falta usar el botón "IA" cada vez).
+        // Consíguela gratis en: https://aistudio.google.com/app/apikey
+        // Si la dejas vacía (""), el botón "IA" seguirá funcionando como alternativa manual.
+        //
+        // ⚠️ AVISO DE SEGURIDAD: si escribes tu clave aquí abajo, quedará VISIBLE para cualquiera
+        // que vea el código del archivo (por ejemplo si el repositorio de GitHub es público).
+        // Para uso interno/privado está bien, pero si quieres seguridad real usa en su lugar
+        // GEMINI_PROXY_URL (más abajo), que oculta la clave por completo detrás de un servidor.
+        // ============================================================================
+        const GEMINI_API_KEY_FIJA = "";
+
+        // OPCIÓN SEGURA (recomendada): si configuraste el proxy (ver gemini-proxy-worker.js),
+        // pon aquí la URL que te dio Cloudflare, ej: "https://tu-proxy.tu-usuario.workers.dev"
+        // Cuando esto está configurado, la clave de Gemini NUNCA viaja al navegador.
+        const GEMINI_PROXY_URL = "";
+
+        let detalleIntegrantes = {
+            "Saimary": {
+                nombre: "Saimary",
+                rol: "Diseñadora Visual",
+                semaforo: "green",
+                score: "95%",
+                ruta: "M:\\Bitacoras\\Saimary\\Semana 21 al 23 de julio",
+                resumen: "Producción de 17 piezas gráficas publicitarias para e-commerce (Zed y Bona Vita), incluyendo retoque avanzado con IA y maquetación para Shopify.",
+                dias: [
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Redacción del Formato de Procesos (Sílice). Corrección de empaque Bona Vita con IA (Gemini) y montaje de post para Monalisa junto a CM Fabiana." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Montaje de banners Shopify para Zed (Móvil/Estándar). Pauta fotográfica con Miguel para alimentar IA y diseño de 3 anuncios publicitarios." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Culminación de anuncios. Banner de Preguntas Frecuentes (FAQ) en Shopify. Edición intensiva de 8 anuncios publicitarios para Zed." }
+                ],
+                incidencia: "Miércoles 22: Falla eléctrica de 8:40 a 9:00 AM e interrupción breve a las 2:10 PM."
+            },
+            "Ángel": {
+                nombre: "Ángel",
+                rol: "Diseñador Gráfico & Estratega Visual",
+                semaforo: "yellow",
+                score: "82%",
+                ruta: "smb://192.168.190.7/marketing/Bitacoras/Angel/Semana del 20 de julio",
+                resumen: "Desarrollo de portadas de reels, diseño para marcas de alimentos y estructuración de 3 ángulos comerciales estratégicos para Vauli.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Revisión de guiones/videos con Eliana. Reinstalación de Adobe Creative Suite y avance de imágenes web Vauli desde PC de Miguel." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Formulario de KPIs Sílice. Diseño de carrusel de salsas Oishi y post intriga papas Di Fiore. Revisión de videos UGC de Vauli." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Montajes gráficos del juego con María. Investigación y definición de 3 ángulos de venta para el hervidor eléctrico de Vauli." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Redacción y justificación de ángulos comerciales. Diseño de 4 portadas de Reels para Metrikasa y NQ." }
+                ],
+                incidencia: "Lunes 20: Fallas críticas en software que requirieron reinstalación completa. Miércoles 22: Cortes eléctricos intermitentes."
+            },
+            "María Laura": {
+                nombre: "María Laura",
+                rol: "Diseñadora de Empaques",
+                semaforo: "yellow",
+                score: "80%",
+                ruta: "smb://192.168.190.7/marketing/Bitacoras/Maria/20 al 24 de Julio",
+                resumen: "Adaptación de troqueles gráficos por cambios de medidas en cajas de exportación y diseño final del nuevo empaque Soportes Adhesivos.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Correcciones finales a instructivos de Runa 2.0 y ZAC. Curaduría de imágenes de pauta con Ángel y Verónica." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Formulario de procesos Sílice. Reajuste de troqueles y cajas para X51 (organizadores) y V-41 (toallas microfibra)." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Montajes del juego con Ángel. Corrección de manual instructivo de MEL interrumpido por cortes eléctricos." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Diseño y finalización del empaque completo para 'Soportes Adhesivos para Pared'." }
+                ],
+                incidencia: "Jueves 23: Inconsistencias y retrasos del motor de Inteligencia Artificial que obligaron a retoques e iteración manual."
+            },
+            "Oriana": {
+                nombre: "Oriana",
+                rol: "Diseñadora de Empaques & Contenido",
+                semaforo: "yellow",
+                score: "85%",
+                ruta: "M:\\Bitacoras\\Oriana\\JULIO\\SEMANA 4 (20 AL 23)",
+                resumen: "Ajuste de luz UV para Lámpara Atrapa Insectos, diseño base y final de Cinta Selladora PVC (Metrikasa) con vectorización de modo de uso.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Alineaciones de luz UV para Lámpara Atrapa Insectos. Post publicitario para Qualidy." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Formato de procesos. Traducciones y vectorización de modo de uso para empaque Cinta Selladora PVC (X35 Metrikasa)." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Modificación de portada para Cinta PVC. Consultas e iteración visual en Gemini e Higgsfield." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Ilustraciones lineales para modo de uso de Cinta PVC. Inicio de diseño para cajas de lámparas atrapa insectos." }
+                ],
+                incidencia: "Miércoles 22: Falla de batería en teclado inalámbrico y cortes de luz que causaron pérdida de cambios no guardados."
+            },
+            "Camila": {
+                nombre: "Camila",
+                rol: "Diseñadora UI/UX & Web Developer",
+                semaforo: "green",
+                score: "94%",
+                ruta: "smb://192.168.190.7/marketing/Bitacoras/Camila/JULIO/20-23",
+                resumen: "Desarrollo de sistemas de diseño en Claude Design para NQ y Vauli, mockups web de Acurrucados y actualización masiva de la tienda.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Mockup UI/UX página de producto NQ. Sistema de Diseño en Claude. Creación de Skill Home Product Page Writing." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Formato Sílice. Corrección imágenes V47 (Vauli/NQ). Sustitución por fotos reales. Portadas para redes de Vauli." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Design System y mockup landing page Acurrucados. Actualización manual de la mini galería de 51 productos Vauli (garantía 30 días)." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Corrección producto V45. Configuración MCP Claude. Redacción de textos e imágenes slideshow para V56 (Alfombra Deslizante)." }
+                ],
+                incidencia: "Miércoles 22: Apagón (2:10-2:11 PM) ocasionó la pérdida de avance en la configuración de recursos de Vauli."
+            },
+            "Fabio Elias": {
+                nombre: "Fabio Elias",
+                rol: "Editor de Video & Productor Audiovisual",
+                semaforo: "green",
+                score: "92%",
+                ruta: "smb://192.168.190.7/marketing/Bitacoras/Fabio/Semana del 20 de Julio al 23 de Julio",
+                resumen: "14 entregas finales en video, incluyendo animación en Motion Graphics, recetas gastronómicas y cobertura fotográfica comercial.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Edición Runa 2.0 y receta Di Fiore. Rodaje Tuna Wrap Di Fiore (55 min) y video institucional (30 min)." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Video Quesadilla Di Fiore (Motion Graphics), promo Icoffee y Momi. Fotos de producto Icoffee y rodaje Momi." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Video Momi (Champú) y Paté Kaldini. Rodaje fotográfico Paté (23 min). Sincronización Icoffee." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Edición video NQLN, Levni Care y adaptación vertical Banner Motion Runa 2.0." }
+                ],
+                incidencia: "Lunes 20: Interrupción por reuniones operativas (80 min). Jueves 23: Pausa por render durante traslado logístico."
+            },
+            "Alejandro": {
+                nombre: "Alejandro",
+                rol: "Editor de Video Publicitario",
+                semaforo: "yellow",
+                score: "78%",
+                ruta: "Servidor Local / NQLN / Semana 20 al 24 Julio 2026",
+                resumen: "Producción de 8 videos comerciales, 14 historias grabadas en exteriores y edición de la promoción Tabla Vauli + Set Cuchillos.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Edición Mallas Vauli y 4 videos de producto formato chino para Shopify NQLN (X1570, X1557, X1517, X1547)." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Rodaje en estudio para RUNA 2.0 con esquemas de iluminación (2 hrs) y tomas para NQLN. Edición X1300." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Edición Unboxing Zed. Rodaje matutino Set Cortaúñas (40 min) y rodaje vespertino promo cruzada Vauli/NQLN." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Pauta exteriores en Unicentro: 2 videos y 14 historias. Edición video promocional Tabla Vauli + Cuchillos." }
+                ],
+                incidencia: "Miércoles 22: Disco de PC congelado por saturación (5 reinicios), archivos corruptos y 1h 20m perdidas por luz/sistema."
+            },
+            "Eleobardo": {
+                nombre: "Eleobardo",
+                rol: "Editor de Video",
+                semaforo: "yellow",
+                score: "80%",
+                ruta: "M:\\Bitacoras\\Leo\\Julio\\Semana 20 - 24",
+                resumen: "7 proyectos gestionados entre grabaciones de unboxing, maquetaciones estructurales con voz en off y recetas de cocina.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Grabación (20 min) y edición completa del Unboxing Runa 2.0." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Apoyo en grabación para Vauli (1h 49m). Edición de 2 videos publicitarios para Vauli." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 2:00 PM", detalle: "Asistencia en sesión con Eliana (2h 30m). Ensamble y maquetación base para 3 proyectos." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Edición final de 1 video (otro traspasado a Fabio). Rodaje de receta Waffles Kaldini (1h 50m)." }
+                ],
+                incidencia: "Jueves 23: Pauta matutina suspendida por falta de helado para el Pie de Bonavita. Se reestructuró la jornada."
+            },
+            "Fabiana": {
+                nombre: "Fabiana",
+                rol: "Community Manager",
+                semaforo: "green",
+                score: "90%",
+                ruta: "\\\\192.168.190.7\\Marketing\\Fabiana",
+                resumen: "Planificación de grillas quincenales/mensuales para +10 marcas, redacción de captions y asistencia directa en pautas gastronómicas.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Estructuración de grillas Rummo, Kaldini, Oishi, Monalisa, Wynwood. Rodaje receta Tuna Wrap con Fabio (55 min)." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Grillas para 10 marcas. Rodaje de 2 videos para Momi (Colonia/Champú) con Fabio (30 min)." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Estructuración general de grillas y captions. Rodaje Paté de Atún Kaldini (25 min)." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Finalización de grillas mensuales. Rodaje Pie Bonavita (1h 10m) y Waffles Kaldini (1h 50m) con Eleobardo." }
+                ],
+                incidencia: "PC lenta e interrupciones repetidas de internet y luz durante la semana. Falta de helado obligó a suspender video de Bonavita."
+            },
+            "María José": {
+                nombre: "María José",
+                rol: "Community Manager",
+                semaforo: "green",
+                score: "96%",
+                ruta: "M:\\Bitacoras\\Maria José\\Copys",
+                resumen: "Redacción de 33 estructuras de contenido, alineación con Grupo Oxford, propuestas de concursos y gestión de 14 cuentas comerciales.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Documento de alineación de grilla Grupo Oxford enviado. Pauta Di Fiore. Publicación en 7 marcas." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Atención a notificaciones en 14 cuentas. Publicación en Qualidy, Sea Color, Lollo Café. 17 Estructuras de contenido redactadas." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "16 Estructuras redactadas (Wynwood, iCoffee, Becense, Monalisa, Oishi). Análisis de retroalimentación de Grupo Oxford." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Documento de propuestas de creadores para Grupo Oxford. Propuesta oficial Concurso 'Día del Gato' Qualidy." }
+                ],
+                incidencia: "Interrupciones por cortes eléctricos el miércoles a las 8:48 AM y 2:20 PM."
+            },
+            "Olimar": {
+                nombre: "Olimar",
+                rol: "Social Manager",
+                semaforo: "green",
+                score: "94%",
+                ruta: "Supervisión General / Social Media",
+                resumen: "Supervisión operativa de publicaciones, redacción de 15 textos para Ads de ZED y RUNA 2.0 y estrategia de 'Productos Hueso'.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Documento de procesos para Katherine. Revisión de guiones de Ariadny para NQLN y supervisión de Unboxing Runa 2.0." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Carga de textos Vauli en Shopify. Publicación de grillas Vauli y Levni Care. Reunión de estrategia 'Productos Hueso' NQLN." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Investigación publicitaria en Foreplay. Redacción de textos para App NQLN (Promoción Tabla + Cuchillos)." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Redacción de 10 textos para ZED y 5 para RUNA 2.0. Programación de publicaciones para días no laborables." }
+                ],
+                incidencia: "Lunes 20: Imposibilidad técnica temporal para adjuntar enlaces en historias de Instagram."
+            },
+            "Eliana": {
+                nombre: "Eliana",
+                rol: "Relaciones Públicas & Influencers",
+                semaforo: "green",
+                score: "92%",
+                ruta: "PR & Influencer Management",
+                resumen: "Gestión de alianzas con +20 creadoras de contenido, redacción del Manual de Grabación RUNA 2.0 y contratos de talentos.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Outreach y contacto con 15 creadoras (Stefania, Vanessa, Carla, etc.). Edición de contratos Mei Huang y Carelis." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Reunión con Estefy. Redacción de 2 guiones para videos de arepas colombianas. Corrección de video de Alexandra." },
+                    { dia: "Miércoles 22", horas: "8:00 AM - 5:00 PM", detalle: "Corrección de guiones de Maria Patricia y Gloriany. Grabación de 3 videos con Eleobardo. Armado de 9 paquetes de productos." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Manual de uso y grabación RUNA 2.0 enviado a creadoras. Envío por Yummy para Efraín. Edición de contrato para Milena." }
+                ],
+                incidencia: "Jueves 23: Paquetes retenidos por falta de cupones MRW; envíos reprogramados previa notificación a Dirección."
+            },
+            "Rebeca": {
+                nombre: "Rebeca",
+                rol: "Coordinación de Mercadeo",
+                semaforo: "green",
+                score: "90%",
+                ruta: "Coordinación de Mercadeo & Estrategia",
+                resumen: "Definición del plan de Cross-selling (22 productos), cotización de seguros para tiendas físicas, depuración Shopify y speech de ventas.",
+                dias: [
+                    { dia: "Lunes 20", horas: "8:00 AM - 5:00 PM", detalle: "Depuración de imágenes no coincidentes en Shopify. Lista de 22 productos para Cross-selling. Cotización póliza de seguro locales." },
+                    { dia: "Martes 21", horas: "8:00 AM - 5:00 PM", detalle: "Reunión con CMM de NQ y Material POP con Miguel. Reunión con Dirección (Mauricio/Gabriel) para estrategia de la dupla Tabla + Cuchillos." },
+                    { dia: "Miércoles 22", horas: "1:00 PM - 5:00 PM", detalle: "Coordinación con Kleyver sobre ofertas en web. Envío de solicitudes de póliza de seguro y estrategia comercial V-19." },
+                    { dia: "Jueves 23", horas: "8:00 AM - 5:00 PM", detalle: "Prueba de calidad a producto Vauli. Speech de ventas para asesores de tienda (Tabla + Cuchillos 30% desc). Propuesta mejora X1512." }
+                ],
+                incidencia: "Miércoles 22: Ausencia matutina por diligencias y fallas de luz en la tarde."
+            },
+            "Kleyver": {
+                nombre: "Kleyver",
+                rol: "Programador / Web Developer",
+                semaforo: "red",
+                score: "0%",
+                ruta: "Sin Ruta Asignada / Bitácora Ausente",
+                resumen: "No se cuenta con registro ni desglose de actividades para la semana del 20 al 23 de julio debido a bitácora omitida.",
+                dias: [
+                    { dia: "Semana Evaluada", horas: "N/A", detalle: "Bitácora de actividades NO realizada / NO entregada para el período correspondiente." }
+                ],
+                incidencia: "🔴 CRÍTICO: Incapacidad de evaluar el avance en la implementación de ofertas e-commerce por falta de reporte."
+            }
+        };
+
+        const detalleIntegrantesDefault = JSON.parse(JSON.stringify(detalleIntegrantes));
+
+        // Mapa de a qué equipo pertenece cada integrante conocido (para reconstruir sus tarjetas tras un reinicio)
+        const EQUIPO_POR_NOMBRE = {
+            "Saimary": "diseno", "Ángel": "diseno", "María Laura": "diseno", "Oriana": "diseno", "Camila": "diseno",
+            "Fabio Elias": "editores", "Alejandro": "editores", "Eleobardo": "editores",
+            "Fabiana": "community", "María José": "community", "Olimar": "community", "Eliana": "community",
+            "Rebeca": "mercadeo",
+            "Kleyver": "programacion"
+        };
+
+        let datosPorDia = {
+            todos: {
+                banner: { titulo: "Vista Semanal Acumulada (20-23 Julio)", subtitulo: "Consolidado general de actividades de los 5 departamentos", graficas: "26", videos: "19", copys: "33+", semaforo: "green", statusText: "Semana Cumplida (90%)" },
+                metrics: { graficas: "26", videos: "19", copys: "33+", horas: "~5.5 h" },
+                chartProduccion: [4, 6, 7, 10],
+                diseno: [
+                    { nombre: "Saimary", rol: "Diseñadora Visual", piezas: "17 Piezas", semaforo: "green", score: "95%", entregables: ["3 Posts (Bona Vita / Monalisa)", "2 Banners Shopify Zed", "8 Anuncios Zed", "1 Banner FAQ Zed"], incidencia: "Corte eléctrico breve el miércoles." },
+                    { nombre: "Ángel", rol: "Diseñador Gráfico", piezas: "6 Piezas + Ángulos", semaforo: "yellow", score: "82%", entregables: ["Carrusel Oishi (salsas)", "Post Di Fiore (papas)", "3 Ángulos Hervidor Vauli", "4 Portadas Reels"], incidencia: "Reinstalación de software por fallas." },
+                    { nombre: "María Laura", rol: "Diseñadora Empaques", piezas: "3 Empaques + Guías", semaforo: "yellow", score: "80%", entregables: ["Instructivos Runa y ZAC", "Empaques X51 y V-41", "Empaque Soportes Adhesivos"], incidencia: "Fallas de IA en prompts de cajas." },
+                    { nombre: "Oriana", rol: "Diseñadora Empaques", piezas: "2 Empaques + 1 Post", semaforo: "yellow", score: "85%", entregables: ["Empaque Lámpara Insectos", "Post Qualidy", "Empaque Cinta PVC", "Ilustraciones uso"], incidencia: "Teclado sin batería y bajones luz." },
+                    { nombre: "Camila", rol: "Diseñadora UI/UX", piezas: "2 Mockups + Systems", semaforo: "green", score: "94%", entregables: ["Mockups NQ y Acurrucados", "Design Systems (NQ/Vauli)", "Actualización 51 prods Vauli", "Skill Home Writing"], incidencia: "Corte eléctrico interrumpió Claude." }
+                ],
+                editores: [
+                    { nombre: "Fabio Elias", rol: "Editor & Productor", piezas: "14 Piezas", semaforo: "green", score: "92%", entregables: ["Quesadilla Di Fiore (Motion)", "Promo Icoffee", "Video Momi (Champú)", "Video NQLN"], incidencia: "Pausa por traslado de material." },
+                    { nombre: "Alejandro", rol: "Editor de Video", piezas: "8 Videos + 14 Stories", semaforo: "yellow", score: "78%", entregables: ["4 Videos Chinos NQLN", "Unboxing Zed", "Promo Tabla Vauli + Cuchillos", "14 Stories Unicentro"], incidencia: "PC congelada por disco lleno." },
+                    { nombre: "Eleobardo", rol: "Editor de Video", piezas: "7 Piezas", semaforo: "yellow", score: "80%", entregables: ["Unboxing Runa 2.0", "2 Videos Vauli", "3 Maquetaciones base", "Receta Waffles Kaldini"], incidencia: "Falta de helado para receta de Pie." }
+                ],
+                community: [
+                    { nombre: "Fabiana", rol: "Community Manager", piezas: "10+ Marcas", semaforo: "green", score: "90%", entregables: ["Grillas mensuales estructuradas", "Redacción captions de marcas", "Asistencia en rodajes de cocina"], incidencia: "PC lenta e internet intermitente." },
+                    { nombre: "María José", rol: "Community Manager", piezas: "33 Estructuras", semaforo: "green", score: "96%", entregables: ["33 Estructuras de contenido", "Documento Alineación Oxford", "Propuesta Día del Gato Qualidy"], incidencia: "Caídas intermitentes de internet." },
+                    { nombre: "Olimar", rol: "Social Manager", piezas: "15 Textos Ads", semaforo: "green", score: "94%", entregables: ["10 Textos Ads ZED", "5 Textos Ads RUNA 2.0", "Estrategia Productos Hueso NQLN"], incidencia: "Supervisión afectada por cortes de luz." },
+                    { nombre: "Eliana", rol: "Relaciones Públicas", piezas: "+20 Creadoras", semaforo: "green", score: "92%", entregables: ["Outreach a 20+ influencers", "Manual Grabación RUNA 2.0", "Gestión de contratos y despachos"], incidencia: "Retención de envíos por cupones MRW." }
+                ],
+                mercadeo: [
+                    { nombre: "Rebeca", rol: "Coordinación Mercadeo", piezas: "4 Planes Estratégicos", semaforo: "green", score: "90%", entregables: ["Estrategia Cross-selling (22 prods)", "Cotización seguros para tiendas", "Speech de venta Tabla + Cuchillos", "Depuración de imágenes Shopify"], incidencia: "Cortes de luz afectaron seguimiento el miércoles." }
+                ],
+                programacion: [
+                    { nombre: "Kleyver", rol: "Programador / Web Dev", piezas: "Sin reporte", semaforo: "red", score: "0%", entregables: ["Bitácora de actividades NO realizada para la semana"], incidencia: "Incapacidad de auditar entregables técnicos por omisión de reporte." }
+                ],
+                incidencias: [
+                    { semaforo: "red", dia: "Semanal", cat: "Administración", desc: "Bitácora no realizada por el programador", afect: "Kleyver", sol: "Requerir entrega extemporánea para auditar web." },
+                    { semaforo: "red", dia: "Miércoles 22", cat: "Energía", desc: "Cortes de luz masivos en la sede", afect: "General", sol: "Guardado preventivo y trabajo fuera de línea." },
+                    { semaforo: "red", dia: "Miércoles 22", cat: "Hardware", desc: "PC congelada por disco lleno (5 reinicios)", afect: "Alejandro", sol: "Atención técnica con depurador facilitado por Miguel." },
+                    { semaforo: "yellow", dia: "Martes 21", cat: "Energía", desc: "Corte eléctrico (8:40 a 9:00 AM)", afect: "Saimary, Alejandro", sol: "Pausa forzada y recuperación posterior." },
+                    { semaforo: "yellow", dia: "Miércoles 22", cat: "Hardware", desc: "Teclado sin batería durante diseño", afect: "Oriana", sol: "Instalación de teclado alámbrico de repuesto." },
+                    { semaforo: "yellow", dia: "Jueves 23", cat: "IA", desc: "Fallas de prompts de IA en empaques", afect: "María Laura", sol: "Ajuste e iteración manual en Photoshop." },
+                    { semaforo: "yellow", dia: "Jueves 23", cat: "Producción", desc: "Falta de insumos para receta en set", afect: "Fabiana, Eleobardo", sol: "Sustitución por receta de Waffles en la tarde." },
+                    { semaforo: "yellow", dia: "Jueves 23", cat: "Logística", desc: "Sin cupones MRW para envíos PR", afect: "Eliana", sol: "Notificación a Mauricio y reprogramación." },
+                    { semaforo: "green", dia: "Lunes 20", cat: "Software", desc: "Fallas técnicas en programas de diseño", afect: "Ángel", sol: "Migración a PC de Miguel mientras reinstalaba." }
+                ]
+            }
+        };
+
+        const datosPorDiaDefault = JSON.parse(JSON.stringify(datosPorDia));
+
+        let diaActual = 'todos';
+        let semaforoFiltroActual = 'todos';
+        let chartProduccionInstancia = null;
+        let chartDeptosInstancia = null;
+        let chartRadarInstancia = null;
+        let chartBarrasDeptosInstancia = null;
+
+        function imprimirDashboard() {
+            const tituloOriginal = document.title;
+            const infoDia = datosPorDia[diaActual] || datosPorDia['todos'];
+            const fecha = new Date().toISOString().slice(0, 10);
+            document.title = `Dashboard Ejecutivo - ${infoDia.banner.titulo} - ${fecha}`;
+
+            const restaurarTitulo = () => {
+                document.title = tituloOriginal;
+                window.removeEventListener('afterprint', restaurarTitulo);
+            };
+            window.addEventListener('afterprint', restaurarTitulo);
+
+            window.print();
+        }
+
+        function abrirModalCarga() {
+            document.getElementById('modal-carga-bitacora').classList.remove('hidden');
+        }
+
+        function cerrarModalCarga() {
+            document.getElementById('modal-carga-bitacora').classList.add('hidden');
+        }
+
+        function permitirDropBitacora(e) {
+            e.preventDefault();
+            document.getElementById('dropzone-bitacora').classList.add('border-brand-500', 'bg-brand-50/30');
+        }
+
+        function salirDropBitacora(e) {
+            e.preventDefault();
+            document.getElementById('dropzone-bitacora').classList.remove('border-brand-500', 'bg-brand-50/30');
+        }
+
+        function soltarArchivoBitacora(e) {
+            e.preventDefault();
+            salirDropBitacora(e);
+            const file = e.dataTransfer && e.dataTransfer.files ? e.dataTransfer.files[0] : null;
+            if (!file) return;
+            procesarArchivoSeleccionado(file);
+        }
+
+        function leerArchivoBitacora(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            procesarArchivoSeleccionado(file);
+        }
+
+        function procesarArchivoSeleccionado(file) {
+            const nombreArchivo = (file.name || '').toLowerCase();
+            const txt = document.getElementById('texto-dropzone');
+
+            if (nombreArchivo.endsWith('.doc') && !nombreArchivo.endsWith('.docx')) {
+                alert("Los archivos .doc (formato antiguo de Word) no pueden leerse directamente en el navegador.\n\nAbre el archivo, copia el texto y pégalo en el recuadro de abajo, o guárdalo como .docx / .txt antes de subirlo.");
+                return;
+            }
+
+            if (nombreArchivo.endsWith('.docx')) {
+                if (typeof mammoth === 'undefined') {
+                    alert("No se pudo cargar el lector de archivos .docx (revisa tu conexión a internet). Copia y pega el texto directamente en el recuadro de abajo.");
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    mammoth.extractRawText({ arrayBuffer: e.target.result })
+                        .then(function(resultado) {
+                            document.getElementById('textarea-bitacora').value = resultado.value;
+                            if (txt) txt.innerText = "Archivo cargado: " + file.name;
+                            procesarBitacoraIngresada();
+                        })
+                        .catch(function(err) {
+                            console.error(err);
+                            alert("No se pudo extraer el texto de este .docx. Cópialo y pégalo directamente en el recuadro de abajo.");
+                        });
+                };
+                reader.onerror = function() {
+                    alert("No se pudo leer el archivo .docx. Intenta pegando el texto directamente en el recuadro de abajo.");
+                };
+                reader.readAsArrayBuffer(file);
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('textarea-bitacora').value = e.target.result;
+                if (txt) txt.innerText = "Archivo cargado: " + file.name;
+                procesarBitacoraIngresada();
+            };
+            reader.onerror = function() {
+                alert("No se pudo leer el archivo. Intenta con un archivo .txt, .md o .docx, o pega el texto directamente en el recuadro de abajo.");
+            };
+            reader.readAsText(file, 'UTF-8');
+        }
+
+        // Procesa automáticamente el texto pegado en el recuadro, sin esperar a que se pulse el botón.
+        document.addEventListener('DOMContentLoaded', function () {
+            const textarea = document.getElementById('textarea-bitacora');
+            if (!textarea) return;
+            textarea.addEventListener('paste', function () {
+                setTimeout(function () {
+                    if (textarea.value.trim()) procesarBitacoraIngresada();
+                }, 50);
+            });
+        });
+
+        // Aviso breve y no bloqueante (no interrumpe como alert()) que confirma la actualización.
+        function mostrarAvisoActualizacion(mensaje, esError) {
+            let toast = document.getElementById('toast-actualizacion');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast-actualizacion';
+                toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[60] px-4 py-3 rounded-2xl shadow-2xl text-xs font-bold flex items-center gap-2 transition-opacity duration-300';
+                document.body.appendChild(toast);
+            }
+            toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[60] px-4 py-3 rounded-2xl shadow-2xl text-xs font-bold flex items-center gap-2 transition-opacity duration-300 ${esError ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white'}`;
+            toast.innerHTML = `<i class="fa-solid ${esError ? 'fa-circle-exclamation' : 'fa-circle-check'}"></i> ${mensaje}`;
+            toast.style.opacity = '1';
+            clearTimeout(toast._timeoutId);
+            toast._timeoutId = setTimeout(() => { toast.style.opacity = '0'; }, 4000);
+        }
+
+        async function procesarBitacoraIngresada() {
+            const texto = document.getElementById('textarea-bitacora').value.trim();
+            if (!texto) {
+                alert("Por favor pega o sube el texto de las bitácoras antes de procesar.");
+                return;
+            }
+
+            const apiKey = GEMINI_API_KEY_FIJA.trim() || localStorage.getItem('gemini_api_key');
+            const usarIA = GEMINI_PROXY_URL.trim() || apiKey;
+
+            if (usarIA) {
+                mostrarAvisoActualizacion("🤖 Analizando con IA (Gemini)...", false);
+                try {
+                    const actualizados = await analizarConGemini(texto, apiKey);
+                    cerrarModalCarga();
+                    switchTab('todos');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    mostrarAvisoActualizacion(`🤖 IA: ${actualizados} integrante(s) analizados con Gemini.`, false);
+                    return;
+                } catch (err) {
+                    console.error('Fallo el análisis con Gemini, usando el analizador de texto:', err);
+                    mostrarAvisoActualizacion("⚠️ La IA falló, usando el analizador de texto normal...", true);
+                }
+            }
+
+            try {
+                const actualizados = parsearTextoBitacora(texto);
+                cerrarModalCarga();
+                switchTab('todos');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                mostrarAvisoActualizacion(`Dashboard actualizado: ${actualizados} integrante(s) al instante.`, false);
+            } catch (err) {
+                console.error(err);
+                alert("No se identificó a ningún integrante conocido en el texto.\n\nAsegúrate de que el nombre de cada persona aparezca en su propia línea antes de su reporte (ej. \"Saimary:\" o \"Bitácora de Ángel\"), tal como en los ejemplos predeterminados.");
+            }
+        }
+
+        // ===== Integración opcional con la IA de Gemini (Google) para analizar la bitácora =====
+
+        function abrirConfigurarIA() {
+            if (GEMINI_PROXY_URL.trim()) {
+                alert("La IA está usando el modo seguro con proxy (GEMINI_PROXY_URL configurado). La clave nunca viaja al navegador — no hace falta configurar nada más aquí.");
+                return;
+            }
+            if (GEMINI_API_KEY_FIJA.trim()) {
+                alert("La IA ya está configurada de forma fija en el código del archivo (GEMINI_API_KEY_FIJA), así que siempre está activa automáticamente.\n\nSi quieres cambiarla, edita esa línea directamente en el archivo .html.");
+                return;
+            }
+            const actual = localStorage.getItem('gemini_api_key') || '';
+            const key = prompt(
+                "Pega aquí tu API Key gratuita de Gemini (Google AI Studio).\n\n" +
+                "Consíguela en: https://aistudio.google.com/app/apikey\n\n" +
+                "Se guarda solo en este navegador (no se envía a ningún otro lado más que a Google).\n" +
+                "Deja el campo vacío y acepta para desactivar la IA.\n\n" +
+                "Tip: si quieres que quede fija para siempre y no depender de este navegador, " +
+                "puedes escribirla directamente en la línea GEMINI_API_KEY_FIJA del archivo .html.",
+                actual
+            );
+            if (key === null) return; // canceló
+            if (key.trim()) {
+                localStorage.setItem('gemini_api_key', key.trim());
+                alert("✅ IA de Gemini activada. La próxima bitácora que cargues será analizada por la IA.");
+            } else {
+                localStorage.removeItem('gemini_api_key');
+                alert("IA desactivada. Se usará el analizador de texto normal.");
+            }
+        }
+
+        function construirPromptGemini(texto) {
+            const nombres = Object.keys(detalleIntegrantes);
+            return `Eres un analista de operaciones. Vas a leer bitácoras semanales de un equipo de marketing y debes extraer, para cada persona mencionada, un resumen estructurado en JSON.
+
+INTEGRANTES CONOCIDOS (usa el nombre EXACTO tal como aparece en esta lista, incluyendo tildes; ignora a cualquier persona que no esté en esta lista):
+${nombres.join(', ')}
+
+Para cada persona que tenga contenido real en el texto (ignora plantillas vacías), devuelve un objeto con estos campos:
+- "nombre": el nombre exacto de la lista de arriba.
+- "semaforo": "green" si tuvo una semana de producción completa sin fallas (90-100%), "yellow" si hubo dificultades menores ya resueltas (70-89%), "red" si hubo un bloqueo operativo o tiempo perdido significativo (<70%), o si la persona NO entregó su bitácora (busca frases como "NO LA HIZO").
+- "score": el porcentaje como texto, ej. "85%". Si la bitácora no fue entregada, "0%".
+- "resumen": UNA sola oración natural tipo "Producción de X piezas/videos/posts para [marcas mencionadas] durante la semana.", con números reales extraídos del texto.
+- "incidencia": descripción breve (máx 150 caracteres) de la incidencia/problema más relevante de la semana, mencionando en qué día ocurrió si se puede. Si no hubo incidencias, escribe "Sin incidencias mayores registradas.".
+- "minutosPerdidos": número entero de minutos perdidos por fallas/incidencias esa semana, sumando TODAS las menciones de tiempo perdido (duraciones explícitas como "20 minutos" y también diferencias entre rangos horarios como "de 8:40 a 9:00"). Si no hay ninguna mención de tiempo, usa 0.
+- "entregables": lista de máximo 4 strings cortos (menos de 90 caracteres cada uno) describiendo los entregables/piezas más importantes de la semana.
+- "piezas": texto corto tipo "17 Piezas" con el conteo TOTAL real de piezas/videos/posts entregados en la semana (súmalos si aparecen por día).
+- "dias": lista de objetos {"dia": "Lunes", "horas": "8:00 AM - 5:00 PM" (o el rango que menciona el texto, o "Jornada reportada" si no hay), "detalle": "resumen breve de lo que hizo ese día"}, uno por cada día que reportó actividad.
+- "ruta": la ruta de servidor mencionada (ej. "smb://..." o "M:\\..."), o cadena vacía si no hay.
+
+Responde ÚNICAMENTE con un JSON válido con esta forma exacta, sin texto adicional, sin markdown, sin \`\`\`:
+{"personas": [ { "nombre": "...", "semaforo": "...", "score": "...", "resumen": "...", "incidencia": "...", "minutosPerdidos": 0, "entregables": ["..."], "piezas": "...", "dias": [{"dia":"...","horas":"...","detalle":"..."}], "ruta": "..." } ]}
+
+TEXTO DE LA BITÁCORA A ANALIZAR:
+"""
+${texto}
+"""`;
+        }
+
+        async function analizarConGemini(texto, apiKey) {
+            const prompt = construirPromptGemini(texto);
+            const usaProxy = !!GEMINI_PROXY_URL.trim();
+            const url = usaProxy
+                ? GEMINI_PROXY_URL.trim()
+                : `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: 'application/json', temperature: 0.2 }
+                })
+            });
+
+            if (!respuesta.ok) {
+                const textoError = await respuesta.text();
+                throw new Error(`Gemini respondió con error ${respuesta.status}: ${textoError}`);
+            }
+
+            const data = await respuesta.json();
+            const textoJson = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (!textoJson) throw new Error('Gemini no devolvió contenido utilizable.');
+
+            let resultado;
+            try {
+                resultado = JSON.parse(textoJson);
+            } catch (e) {
+                throw new Error('La respuesta de Gemini no fue un JSON válido: ' + e.message);
+            }
+
+            const personas = Array.isArray(resultado.personas) ? resultado.personas : [];
+            const nombresConocidos = new Set(Object.keys(detalleIntegrantes));
+            let actualizados = 0;
+
+            personas.forEach(p => {
+                if (!p || !nombresConocidos.has(p.nombre)) return;
+                const ok = aplicarDatosPersona(p.nombre, {
+                    semaforo: ['green', 'yellow', 'red'].includes(p.semaforo) ? p.semaforo : 'yellow',
+                    score: typeof p.score === 'string' ? p.score : '85%',
+                    incidencia: p.incidencia || 'Sin incidencias mayores registradas.',
+                    minutosPerdidos: parseInt(p.minutosPerdidos, 10) || 0,
+                    ruta: p.ruta || null,
+                    resumen: p.resumen || null,
+                    dias: Array.isArray(p.dias) ? p.dias : null,
+                    entregables: Array.isArray(p.entregables) ? p.entregables.slice(0, 4) : [],
+                    piezas: p.piezas || null,
+                    piezasTotales: parseInt((p.piezas || '').match(/\d+/)?.[0], 10) || 0
+                });
+                if (ok) actualizados++;
+            });
+
+            if (actualizados === 0) {
+                throw new Error('Gemini no devolvió a ningún integrante reconocido.');
+            }
+
+            filtrarDia(diaActual);
+            return actualizados;
+        }
+
+        // Palabras clave que indican incidencias/tropiezos operativos dentro de una bitácora
+        // Palabras clave (sin acentos, se comparan contra texto ya normalizado) que indican incidencias/tropiezos
+        const PALABRAS_INCIDENCIA = ['corte', 'falla', 'fallo', 'apagon', 'bajon', 'se fue la luz', 'sin luz', 'dano', 'error', 'perdid', 'no funciono', 'no funcionaba', 'internet', 'lent', 'congel', 'colgad', 'reinstal', 'interrup', 'retras', 'bateria', 'corrupt', 'saturacion', 'pausa operativa', 'pausa forzada', 'falta de insumos', 'falta de herramientas', 'falta de material', 'imposibilidad', 'cuello de botella', 'atasc'];
+        // Frases que indican que la bitácora de esa persona NO fue entregada (caso crítico).
+        // Deliberadamente específicas (mencionan "hizo" o "bitacora") para no confundirse con notas
+        // normales de "no realicé [tarea puntual]" que la gente escribe en secciones que no le aplican ese día.
+        const PALABRAS_CRITICO = ['no la hizo', 'no lo hizo', 'bitacora no realizada', 'bitacora no entregada', 'bitacora no enviada', 'sin bitacora', 'no envio bitacora', 'no entrego bitacora', 'no reporto bitacora', 'bitacora ausente'];
+
+        // Quita acentos/diacríticos y pasa a minúsculas, para comparar sin importar tildes.
+        function normalizarTexto(s) {
+            return (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+        }
+
+        const DIAS_SEMANA_NORM = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+
+        // Una línea "parece" un encabezado (de persona o de sección) si son solo letras y espacios,
+        // sin dos puntos, dígitos ni símbolos — así no se confunde con líneas de contenido normal.
+        function pareceEncabezado(l) {
+            return l.length > 0 && l.length <= 30 && /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(l);
+        }
+
+        // Extrae minutos mencionados en una línea de incidencia (ej. "1 hora y 49 minutos", "20 minutos")
+        function extraerMinutosDeTexto(texto) {
+            const explicitos = extraerMinutosExplicitos(texto);
+            if (explicitos > 0) return explicitos;
+            return extraerMinutosDeRangoHorario(texto);
+        }
+
+        // Detecta duración expresada explícitamente: "1 hora y 49 minutos", "20 minutos", "80 minutos"
+        function extraerMinutosExplicitos(texto) {
+            let minutos = 0;
+            const reHorasMin = /(\d+)\s*(?:horas?|hrs?)\s*(?:y\s*)?(\d+)?\s*(?:minutos?|mins?)?/gi;
+            let m;
+            const rangosUsados = [];
+            while ((m = reHorasMin.exec(texto)) !== null) {
+                minutos += parseInt(m[1], 10) * 60 + (m[2] ? parseInt(m[2], 10) : 0);
+                rangosUsados.push([m.index, m.index + m[0].length]);
+            }
+            const reMin = /(\d+)\s*min(?:uto)?s?\b/gi;
+            while ((m = reMin.exec(texto)) !== null) {
+                const dentroDeHoras = rangosUsados.some(([ini, fin]) => m.index >= ini && m.index < fin);
+                if (!dentroDeHoras) minutos += parseInt(m[1], 10);
+            }
+            return minutos;
+        }
+
+        function convertirA24h(hora, minuto, ampm) {
+            let h = parseInt(hora, 10);
+            if (ampm) {
+                if (/p/i.test(ampm) && h < 12) h += 12;
+                if (/a/i.test(ampm) && h === 12) h = 0;
+            }
+            return h * 60 + parseInt(minuto, 10);
+        }
+
+        // Detecta duración por rango horario: "de 8:40 a 9:00", "2:10 p.m. a 2:11 p.m.", "8:40 AM - 9:10 AM"
+        function extraerMinutosDeRangoHorario(texto) {
+            const re = /(\d{1,2}):(\d{2})\s*(a\.?m\.?|p\.?m\.?)?\s*(?:a|-|–|—|hasta)\s*(\d{1,2}):(\d{2})\s*(a\.?m\.?|p\.?m\.?)?/gi;
+            let total = 0;
+            let m;
+            while ((m = re.exec(texto)) !== null) {
+                let [, h1, m1, ap1, h2, m2, ap2] = m;
+                if (!ap1 && ap2) ap1 = ap2;
+                if (!ap2 && ap1) ap2 = ap1;
+                const inicio = convertirA24h(h1, m1, ap1);
+                let fin = convertirA24h(h2, m2, ap2);
+                let diff = fin - inicio;
+                if (diff < 0) diff += 24 * 60;
+                if (diff > 0 && diff < 600) total += diff; // descarta valores absurdos (>10h)
+            }
+            return total;
+        }
+
+        function formatearMinutos(minutos) {
+            if (!minutos) return '0 min';
+            const h = Math.floor(minutos / 60);
+            const m = minutos % 60;
+            if (h > 0 && m > 0) return `${h}h ${m}min`;
+            if (h > 0) return `${h}h`;
+            return `${m} min`;
+        }
+
+        function capitalizarPalabra(w) {
+            return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+        }
+
+        // Detecta si una línea marca el inicio de un nuevo día (ej. "📅 DÍA: Martes, 21 de julio",
+        // "DÍA: [Lunes]", "Martes:", "Lunes 20/07/2026", o simplemente "Lunes" sola).
+        function extraerDiaDeLinea(l) {
+            let m = l.match(/D[IÍ]A:\s*\[?\s*([A-Za-zÀ-ÿ]+)/i);
+            if (m && DIAS_SEMANA_NORM.includes(normalizarTexto(m[1]))) return capitalizarPalabra(m[1]);
+
+            m = l.match(/^([A-Za-zÀ-ÿ]+)\s*[:,]?\s*(\d{1,2}[\/\-]?\d{0,4})?/);
+            if (m && l.length <= 40 && DIAS_SEMANA_NORM.includes(normalizarTexto(m[1]))) return capitalizarPalabra(m[1]);
+
+            return null;
+        }
+
+        // Busca un rango horario (ej. "8:00 a 11:15" o "08:00 a.m. – 10:30 a.m.") dentro de un grupo de líneas.
+        function extraerRangoHorario(lineas) {
+            const re = /\d{1,2}:\d{2}\s*(?:[ap]\.?m\.?)?\s*(?:[-–—]|a)\s*\d{1,2}:\d{2}\s*(?:[ap]\.?m\.?)?/i;
+            for (const l of lineas) {
+                const m = l.match(re);
+                if (m) return m[0];
+            }
+            return null;
+        }
+
+        // Construye un resumen ejecutivo tipo "Producción de 8 videos, 5 piezas para Vauli y NQLN durante la semana."
+        // sumando los conteos reales ("= N piezas/videos/...") y las marcas mencionadas en el texto.
+        // Suma el conteo REAL de piezas ("= N piezas/videos/posts/...") en todo el texto de la persona,
+        // en vez de contar solo las líneas mostradas como "Entregables" en la tarjeta (limitadas a 4).
+        function contarPiezasTotales(lineas) {
+            let total = 0;
+            lineas.forEach(l => {
+                const m = l.match(/=\s*(\d+)\s*(?:piezas?|posts?|videos?|entregables?|banners?|empaques?|anuncios?|historias?|mockups?|carruseles?|estructuras?|textos?)/i);
+                if (m) total += parseInt(m[1], 10);
+            });
+            return total;
+        }
+
+        function construirResumenEjecutivo(lineas) {
+            const tally = {};
+            const marcas = new Set();
+            const TIPO_RE = 'piezas?|posts?|videos?|entregables?|banners?|empaques?|anuncios?|historias?|mockups?|carruseles?|estructuras?|textos?';
+
+            const sumarTipo = (tipoRaw, n) => {
+                let tipo = tipoRaw.toLowerCase();
+                if (!tipo.endsWith('s')) tipo += 's';
+                tally[tipo] = (tally[tipo] || 0) + n;
+            };
+
+            lineas.forEach(l => {
+                const tieneTotal = new RegExp('=\\s*\\d+\\s*(?:' + TIPO_RE + ')', 'i').test(l);
+
+                if (tieneTotal) {
+                    // Línea de resumen con total explícito (ej. "[...] = 3 piezas"): solo tomamos el total,
+                    // para no sumar también los sub-conteos entre corchetes que ya están incluidos en él.
+                    const mTotal = l.match(new RegExp('=\\s*(\\d+)\\s*(' + TIPO_RE + ')', 'i'));
+                    if (mTotal) sumarTipo(mTotal[2], parseInt(mTotal[1], 10));
+                } else {
+                    // Línea narrativa sin "=": buscamos menciones sueltas tipo "14 historias", "2 videos"
+                    const reSuelto = new RegExp('(\\d+)\\s*(' + TIPO_RE + ')\\b', 'gi');
+                    let m;
+                    while ((m = reSuelto.exec(l)) !== null) {
+                        sumarTipo(m[2], parseInt(m[1], 10));
+                    }
+                }
+
+                const mMarca = l.match(/\(Marcas?:\s*([^)]+)\)/i);
+                if (mMarca) {
+                    mMarca[1].split(',').forEach(parte => {
+                        const limpio = parte.trim().replace(/^\d+\s*/, '').trim();
+                        if (limpio && limpio.length <= 30) marcas.add(limpio);
+                    });
+                }
+            });
+
+            const partes = Object.entries(tally)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 4)
+                .map(([tipo, n]) => `${n} ${tipo}`);
+
+            if (!partes.length) return null;
+
+            let frase = 'Producción de ' + (partes.length > 1
+                ? partes.slice(0, -1).join(', ') + ' y ' + partes[partes.length - 1]
+                : partes[0]);
+            if (marcas.size) frase += ` para ${Array.from(marcas).slice(0, 4).join(', ')}`;
+            frase += ' durante la semana.';
+            return frase;
+        }
+
+        // Compara con límites de palabra para evitar falsos positivos (ej. que "lent" no dispare
+        // dentro de "talento", o que "corte" no dispare dentro de "recorte").
+        function contienePalabraClave(textoNorm, palabras) {
+            return palabras.some(p => new RegExp('\\b' + p.replace(/\s+/g, '\\s+'), 'i').test(textoNorm));
+        }
+
+        function parsearTextoBitacora(rawText) {
+            const lineas = rawText.split('\n');
+            const nombresConocidos = Object.keys(detalleIntegrantes).map(n => ({ original: n, norm: normalizarTexto(n) }));
+
+            // Busca coincidencia de nombre en una línea corta tipo encabezado (nombre completo o solo el primer nombre)
+            function buscarNombrePorEncabezado(lineaNorm) {
+                for (const info of nombresConocidos) {
+                    if (info.norm === lineaNorm) return info.original;
+                }
+                for (const info of nombresConocidos) {
+                    if (info.norm.startsWith(lineaNorm + ' ') || lineaNorm.startsWith(info.norm + ' ')) return info.original;
+                }
+                return null;
+            }
+
+            // Busca coincidencia dentro de líneas largas tipo "Bitácora - Nombre Completo / Rol..."
+            function buscarNombrePorTitulo(lineaNorm) {
+                if (!lineaNorm.includes('bitacora')) return null;
+                for (const info of nombresConocidos) {
+                    if (lineaNorm.includes(info.norm)) return info.original;
+                }
+                return null;
+            }
+
+            let personaActual = null;
+            const bloques = {};
+
+            const asegurarBloque = (nombre) => {
+                if (!bloques[nombre]) bloques[nombre] = { lineas: [], incidencias: [], ruta: null, critico: null, minutosPerdidos: 0, dias: {}, ordenDias: [], diaActual: null };
+                return bloques[nombre];
+            };
+
+            lineas.forEach(linea => {
+                const l = linea.trim();
+                if (!l) return;
+                const lNorm = normalizarTexto(l);
+
+                // 1) ¿La línea completa identifica a alguien conocido? (encabezado corto o título largo de "Bitácora - Nombre")
+                const esCandidataCorta = pareceEncabezado(l);
+                const nombrePorEncabezado = esCandidataCorta ? buscarNombrePorEncabezado(lNorm) : null;
+                const nombreEncontrado = nombrePorEncabezado || buscarNombrePorTitulo(lNorm);
+
+                if (nombreEncontrado) {
+                    personaActual = nombreEncontrado;
+                    asegurarBloque(personaActual);
+                    return;
+                }
+
+                // 2) ¿Parece un encabezado de sección/nombre que NO reconocemos (equipo, rol, persona nueva)?
+                //    Cortamos la atribución para no mezclar su contenido con la persona anterior — EXCEPTO si es
+                //    un día de la semana suelto (usado como separador) o si la línea contiene una frase crítica
+                //    real (ej. "NO LA HIZO"), que debe procesarse como contenido y no como encabezado.
+                const esDiaSemana = DIAS_SEMANA_NORM.includes(lNorm);
+                const contieneFraseCritica = contienePalabraClave(lNorm, PALABRAS_CRITICO);
+                if (esCandidataCorta && !esDiaSemana && !contieneFraseCritica) {
+                    personaActual = null;
+                    return;
+                }
+
+                // 3) Contenido normal: se atribuye a la persona actual (si hay alguna identificada)
+                if (!personaActual) return;
+                const bloque = asegurarBloque(personaActual);
+                bloque.lineas.push(l);
+
+                const diaDetectado = extraerDiaDeLinea(l);
+                if (diaDetectado) {
+                    bloque.diaActual = diaDetectado;
+                    if (!bloque.dias[diaDetectado]) {
+                        bloque.dias[diaDetectado] = { lineas: [] };
+                        bloque.ordenDias.push(diaDetectado);
+                    }
+                }
+                if (bloque.diaActual && bloque.dias[bloque.diaActual]) {
+                    bloque.dias[bloque.diaActual].lineas.push(l);
+                }
+
+                if (contieneFraseCritica) {
+                    bloque.critico = l;
+                } else if (contienePalabraClave(lNorm, PALABRAS_INCIDENCIA)) {
+                    bloque.incidencias.push(bloque.diaActual ? `${bloque.diaActual}: ${l}` : l);
+                    bloque.minutosPerdidos = (bloque.minutosPerdidos || 0) + extraerMinutosDeTexto(l);
+                }
+
+                if (l.includes("smb://") || l.includes("M:\\") || l.includes("\\\\192.168")) {
+                    bloque.ruta = l.replace(/Enlace:/i, '').replace(/Rutas del Servidor:/i, '').trim();
+                }
+            });
+
+            let personasActualizadas = 0;
+
+            Object.keys(bloques).forEach(nombre => {
+                const bloque = bloques[nombre];
+                const detalle = detalleIntegrantes[nombre];
+                if (!detalle || (!bloque.lineas.length && !bloque.critico)) return;
+
+                personasActualizadas++;
+
+                // Líneas que parecen entregables. Priorizamos líneas de "resumen" (ej. "= 3 piezas")
+                // sobre párrafos narrativos largos, y truncamos todo a un tamaño legible en una tarjeta.
+                const lineasCandidatas = bloque.lineas.filter(l => l !== bloque.critico);
+                const resumenes = lineasCandidatas.filter(l => /=\s*\d+\s*(pieza|piezas|post|posts|video|videos|entregable|entregables|banner|banners|empaque|empaques|anuncio|anuncios)/i.test(l));
+                const otras = lineasCandidatas.filter(l => !resumenes.includes(l) && (/^[-*•]/.test(l) || /^\d+[\.\)]/.test(l) || l.length > 8));
+
+                const entregablesDetectados = [...resumenes, ...otras]
+                    .map(l => l.replace(/^[-*•]\s*/, '').replace(/^\d+[\.\)]\s*/, '').trim())
+                    .map(l => l.length > 100 ? l.slice(0, 97).trim() + '…' : l)
+                    .slice(0, 4);
+
+                const piezasTotales = contarPiezasTotales(bloque.lineas);
+
+                // Semáforo según definición: 🟢 90-100% Producción completa sin fallas
+                // 🟡 70-89% Avance moderado con dificultades menores resueltas
+                // 🔴 <70% Bloqueo operativo / tiempo perdido significativo
+                let semaforo = 'green', score = '95%';
+                if (bloque.critico) {
+                    semaforo = 'red'; score = '0%';
+                } else if (bloque.incidencias.length >= 3 || bloque.minutosPerdidos >= 120) {
+                    semaforo = 'red'; score = '60%';
+                } else if (bloque.incidencias.length === 2 || bloque.minutosPerdidos >= 45) {
+                    semaforo = 'yellow'; score = '75%';
+                } else if (bloque.incidencias.length === 1) {
+                    semaforo = 'yellow'; score = '85%';
+                }
+
+                const truncar = (s, max) => (s && s.length > max) ? s.slice(0, max - 1).trim() + '…' : s;
+                const horasTexto = bloque.minutosPerdidos ? ` (⏱️ ${formatearMinutos(bloque.minutosPerdidos)} perdidos)` : '';
+                const textoIncidencia = bloque.critico
+                    ? "🔴 CRÍTICO: Bitácora no entregada."
+                    : (truncar(bloque.incidencias[0], 150) ? truncar(bloque.incidencias[0], 150) + horasTexto : "Sin incidencias mayores registradas.");
+
+                let dias = null;
+                if (bloque.ordenDias.length) {
+                    dias = bloque.ordenDias.map(nombreDia => {
+                        const lineasDia = bloque.dias[nombreDia].lineas.filter(l => l !== bloque.critico);
+                        const horas = extraerRangoHorario(lineasDia) || "Jornada reportada";
+                        const resumenDia = lineasDia
+                            .filter(l => l.length > 8)
+                            .filter(l => !(l.length <= 40 && extraerDiaDeLinea(l)))
+                            .map(l => l.length > 220 ? l.slice(0, 217).trim() + '…' : l)
+                            .slice(0, 3)
+                            .join(' ');
+                        return { dia: nombreDia, horas, detalle: resumenDia || 'Sin detalle adicional registrado.' };
+                    });
+                } else if (entregablesDetectados.length) {
+                    dias = [{ dia: "Última Bitácora Cargada", horas: "—", detalle: entregablesDetectados.join('. ') }];
+                }
+
+                aplicarDatosPersona(nombre, {
+                    semaforo, score,
+                    incidencia: textoIncidencia,
+                    minutosPerdidos: bloque.minutosPerdidos || 0,
+                    ruta: bloque.ruta,
+                    resumen: entregablesDetectados.length ? (construirResumenEjecutivo(bloque.lineas) || entregablesDetectados.slice(0, 2).join(' ')) : null,
+                    dias,
+                    entregables: entregablesDetectados,
+                    piezas: piezasTotales > 0 ? `${piezasTotales} Piezas` : (entregablesDetectados.length ? `${entregablesDetectados.length} Entregables` : null),
+                    piezasTotales
+                });
+            });
+
+            if (personasActualizadas === 0) {
+                throw new Error('No se identificó a ningún integrante conocido en el texto.');
+            }
+
+            filtrarDia(diaActual);
+            return personasActualizadas;
+        }
+
+        // Aplica datos ya extraídos (por el parser de texto O por la IA de Gemini) a la ficha de
+        // detalle y a la tarjeta de una persona. Único punto de escritura, compartido por ambos métodos.
+        function aplicarDatosPersona(nombre, datos) {
+            const detalle = detalleIntegrantes[nombre];
+            if (!detalle) return false;
+
+            detalle.semaforo = datos.semaforo || detalle.semaforo;
+            detalle.score = datos.score || detalle.score;
+            detalle.incidencia = datos.incidencia || detalle.incidencia;
+            detalle.minutosPerdidos = datos.minutosPerdidos || 0;
+            if (datos.ruta) detalle.ruta = datos.ruta;
+            if (datos.resumen) detalle.resumen = datos.resumen;
+            if (datos.dias && datos.dias.length) detalle.dias = datos.dias;
+
+            const equipoDeEstePersona = EQUIPO_POR_NOMBRE[nombre];
+            if (equipoDeEstePersona && datosPorDia.todos[equipoDeEstePersona]) {
+                const lista = datosPorDia.todos[equipoDeEstePersona];
+                let item = lista.find(p => p.nombre === nombre);
+
+                if (!item) {
+                    item = { nombre: detalle.nombre, rol: detalle.rol, piezas: "0 Entregables", semaforo: 'gray', score: '0%', entregables: [], incidencia: "Sin datos cargados.", minutosPerdidos: 0, piezasTotales: 0 };
+                    lista.push(item);
+                }
+
+                item.semaforo = datos.semaforo || item.semaforo;
+                item.score = datos.score || item.score;
+                item.incidencia = datos.incidencia || item.incidencia;
+                item.minutosPerdidos = datos.minutosPerdidos || 0;
+                if (typeof datos.piezasTotales === 'number') item.piezasTotales = datos.piezasTotales;
+                if (datos.entregables && datos.entregables.length) item.entregables = datos.entregables;
+                if (datos.piezas) item.piezas = datos.piezas;
+            }
+            return true;
+        }
+
+        // Construye el listado de integrantes "en cero": conserva nombre/rol (necesarios para
+        // reconocer a cada persona cuando se cargue una nueva bitácora), pero sin datos de reporte.
+        function crearRosterEnCero() {
+            const roster = {};
+            Object.keys(detalleIntegrantesDefault).forEach(nombre => {
+                const base = detalleIntegrantesDefault[nombre];
+                roster[nombre] = {
+                    nombre: base.nombre,
+                    rol: base.rol,
+                    semaforo: 'gray',
+                    score: '0%',
+                    ruta: '',
+                    resumen: 'Sin datos cargados para este período.',
+                    dias: [],
+                    incidencia: 'Sin datos cargados.'
+                };
+            });
+            return roster;
+        }
+
+        // Construye la estructura de datosPorDia completamente en cero (sin tarjetas, sin métricas).
+        function crearEstadoEnCero() {
+            return {
+                todos: {
+                    banner: { titulo: "Sin datos cargados", subtitulo: "Carga la bitácora de la semana para comenzar el análisis", graficas: "0", videos: "0", copys: "0", semaforo: "gray", statusText: "Esperando datos (0%)" },
+                    metrics: { graficas: "0", videos: "0", copys: "0", horas: "0 h" },
+                    chartProduccion: [0, 0, 0, 0],
+                    diseno: [],
+                    editores: [],
+                    community: [],
+                    mercadeo: [],
+                    programacion: [],
+                    incidencias: []
+                }
+            };
+        }
+
+        function restaurarDatosPreterminados() {
+            detalleIntegrantes = crearRosterEnCero();
+            datosPorDia = crearEstadoEnCero();
+            document.getElementById('textarea-bitacora').value = "";
+            document.getElementById('input-file-bitacora').value = "";
+            document.getElementById('input-busqueda').value = "";
+            const txt = document.getElementById('texto-dropzone');
+            if (txt) txt.innerText = "Haz clic o arrastra un archivo de texto aquí";
+            semaforoFiltroActual = 'todos';
+            filtrarPorSemaforo('todos');
+            filtrarDia('todos');
+            cerrarModalCarga();
+            alert("Todo quedó en 0. Ya puedes cargar la bitácora de otra semana.");
+        }
+
+        function getSemaforoClass(color) {
+            if (color === 'green') return { bg: 'bg-emerald-500', text: 'text-emerald-800', badge: 'bg-emerald-100 text-emerald-800 border-emerald-200', glow: 'led-green', icon: '🟢' };
+            if (color === 'yellow') return { bg: 'bg-amber-500', text: 'text-amber-800', badge: 'bg-amber-100 text-amber-800 border-amber-200', glow: 'led-yellow', icon: '🟡' };
+            if (color === 'gray') return { bg: 'bg-slate-400', text: 'text-slate-600', badge: 'bg-slate-100 text-slate-600 border-slate-200', glow: '', icon: '⚪' };
+            return { bg: 'bg-rose-500', text: 'text-rose-800', badge: 'bg-rose-100 text-rose-800 border-rose-200', glow: 'led-red', icon: '🔴' };
+        }
+
+        function abrirModal(nombreKey) {
+            const data = detalleIntegrantes[nombreKey];
+            if (!data) return;
+
+            const sem = getSemaforoClass(data.semaforo);
+
+            const esDisenador = (data.rol || '').toLowerCase().includes('diseñ') || (data.rol || '').toLowerCase().includes('disen');
+            const avatarEl = document.getElementById('modal-avatar');
+            avatarEl.classList.remove('bg-brand-600', 'bg-blue-900');
+            avatarEl.classList.add(esDisenador ? 'bg-blue-900' : 'bg-brand-600');
+            avatarEl.innerText = data.nombre.charAt(0);
+            document.getElementById('modal-nombre').innerText = data.nombre;
+            document.getElementById('modal-rol').innerText = data.rol;
+            
+            const badge = document.getElementById('modal-score-badge');
+            badge.className = `px-2 py-0.5 text-[10px] font-bold border rounded-full ${sem.badge}`;
+            badge.innerText = `${sem.icon} ${data.score}`;
+
+            document.getElementById('modal-ruta').innerText = data.ruta || "No especificada";
+            document.getElementById('modal-resumen-semanal').innerText = data.resumen;
+            document.getElementById('modal-incidencia-texto').innerText = data.incidencia;
+
+            const diasContainer = document.getElementById('modal-dias-container');
+            diasContainer.innerHTML = data.dias.map(d => `
+                <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-slate-800 text-xs">${d.dia}</span>
+                        <span class="text-[10px] font-semibold text-slate-400"><i class="fa-regular fa-clock mr-1"></i>${d.horas}</span>
+                    </div>
+                    <p class="text-slate-600 text-[11px] leading-relaxed">${d.detalle}</p>
+                </div>
+            `).join('');
+
+            document.getElementById('modal-integrante').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-integrante').classList.add('hidden');
+        }
+
+        function copiarRuta() {
+            const ruta = document.getElementById('modal-ruta').innerText;
+            const tempInput = document.createElement("input");
+            tempInput.value = ruta;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Ruta copiada: " + ruta);
+        }
+
+        window.addEventListener('keydown', (e) => { 
+            if (e.key === 'Escape') {
+                cerrarModal();
+                cerrarModalCarga();
+            }
+        });
+
+        document.getElementById('modal-integrante').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modal-integrante')) cerrarModal();
+        });
+
+        // Recalcula el banner superior y las métricas a partir de los datos realmente cargados
+        // (antes se quedaban congelados en los valores de ejemplo o en 0 después de un reinicio).
+        function recalcularBannerYMetricas(infoDia) {
+            const todasLasPersonas = ['diseno', 'editores', 'community', 'mercadeo', 'programacion']
+                .flatMap(k => infoDia[k] || []);
+
+            const totalIntegrantes = todasLasPersonas.length;
+            const contarPiezas = p => (p.piezasTotales && p.piezasTotales > 0) ? p.piezasTotales : (p.entregables ? p.entregables.length : 0);
+            const graficas = (infoDia.diseno || []).reduce((acc, p) => acc + contarPiezas(p), 0);
+            const videos = (infoDia.editores || []).reduce((acc, p) => acc + contarPiezas(p), 0);
+            const copys = (infoDia.community || []).reduce((acc, p) => acc + contarPiezas(p), 0);
+
+            if (totalIntegrantes === 0) {
+                infoDia.banner.titulo = "Sin datos cargados";
+                infoDia.banner.subtitulo = "Carga la bitácora de la semana para comenzar el análisis";
+                infoDia.banner.semaforo = "gray";
+                infoDia.banner.statusText = "Esperando datos (0%)";
+                infoDia.banner.graficas = "0";
+                infoDia.banner.videos = "0";
+                infoDia.banner.copys = "0";
+                infoDia.metrics.graficas = "0";
+                infoDia.metrics.videos = "0";
+                infoDia.metrics.copys = "0";
+                infoDia.metrics.horas = "0 h";
+                infoDia.metrics.horasSubtitulo = "⚪ Carga una bitácora para calcularlas";
+                infoDia.metrics.horasColor = "text-slate-400";
+                return;
+            }
+
+            const criticos = todasLasPersonas.filter(p => p.semaforo === 'red').length;
+            const alertas = todasLasPersonas.filter(p => p.semaforo === 'yellow').length;
+            const promedioGeneral = Math.round(todasLasPersonas.reduce((acc, p) => acc + (parseInt(p.score, 10) || 0), 0) / totalIntegrantes);
+            const minutosPerdidosTotal = todasLasPersonas.reduce((acc, p) => acc + (p.minutosPerdidos || 0), 0);
+            const personasConFallas = todasLasPersonas.filter(p => (p.minutosPerdidos || 0) > 0).length;
+            const sinBitacora = todasLasPersonas.filter(p => p.semaforo === 'red' && !(p.minutosPerdidos > 0)).length;
+
+            let semaforoGeneral = 'green';
+            if (criticos > 0) semaforoGeneral = 'red';
+            else if (alertas > 0) semaforoGeneral = 'yellow';
+
+            infoDia.banner.titulo = "Bitácora Cargada";
+            infoDia.banner.subtitulo = `${totalIntegrantes} integrante(s) reportados en ${['diseno','editores','community','mercadeo','programacion'].filter(k => (infoDia[k]||[]).length).length} departamento(s)`;
+            infoDia.banner.semaforo = semaforoGeneral;
+            infoDia.banner.statusText = criticos > 0
+                ? `${criticos} crítico(s) detectado(s)`
+                : `Promedio general (${promedioGeneral}%)`;
+            infoDia.banner.graficas = String(graficas);
+            infoDia.banner.videos = String(videos);
+            infoDia.banner.copys = String(copys);
+
+            infoDia.metrics.graficas = String(graficas);
+            infoDia.metrics.videos = String(videos);
+            infoDia.metrics.copys = String(copys);
+            infoDia.metrics.horas = formatearMinutos(minutosPerdidosTotal);
+
+            // Subtítulo dinámico: horas perdidas por fallas reales de la semana (no texto fijo)
+            if (minutosPerdidosTotal === 0 && sinBitacora === 0) {
+                infoDia.metrics.horasSubtitulo = "🟢 Sin fallas registradas esta semana";
+                infoDia.metrics.horasColor = "text-emerald-600";
+            } else {
+                const partes = [];
+                if (minutosPerdidosTotal > 0) partes.push(`fallas en ${personasConFallas} integrante(s)`);
+                if (sinBitacora > 0) partes.push(`${sinBitacora} bitácora(s) sin entregar`);
+                infoDia.metrics.horasSubtitulo = `🔴 ${partes.join(' · ')} esta semana`;
+                infoDia.metrics.horasColor = "text-rose-600";
+            }
+        }
+
+        function filtrarDia(dia) {
+            diaActual = dia;
+
+            document.querySelectorAll('.btn-dia').forEach(btn => {
+                btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-xs', 'font-bold');
+                btn.classList.add('text-slate-600', 'font-medium');
+            });
+            const btnActivo = document.getElementById('btn-dia-' + dia);
+            if (btnActivo) {
+                btnActivo.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-xs', 'font-bold');
+                btnActivo.classList.remove('text-slate-600', 'font-medium');
+            }
+
+            const infoDia = datosPorDia[dia] || datosPorDia['todos'];
+            recalcularBannerYMetricas(infoDia);
+            const semStyle = getSemaforoClass(infoDia.banner.semaforo);
+
+            const badgeHeader = document.getElementById('badge-status-general');
+            badgeHeader.className = `inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border ${semStyle.badge}`;
+            badgeHeader.querySelector('span:first-child').className = `w-2.5 h-2.5 mr-1.5 rounded-full ${semStyle.bg} ${semStyle.glow}`;
+            document.getElementById('text-status-general').innerText = infoDia.banner.statusText;
+
+            document.getElementById('titulo-banner-dia').innerText = infoDia.banner.titulo;
+            document.getElementById('subtitulo-banner-dia').innerText = infoDia.banner.subtitulo;
+            document.getElementById('stat-banner-graficas').innerText = infoDia.banner.graficas;
+            document.getElementById('stat-banner-videos').innerText = infoDia.banner.videos;
+            document.getElementById('stat-banner-copys').innerText = infoDia.banner.copys;
+            document.getElementById('banner-led').className = `w-4 h-4 rounded-full ${semStyle.bg} ${semStyle.glow} block`;
+
+            document.getElementById('metric-graficas').innerText = infoDia.metrics.graficas;
+            document.getElementById('metric-videos').innerText = infoDia.metrics.videos;
+            document.getElementById('metric-copys').innerText = infoDia.metrics.copys;
+            document.getElementById('metric-horas').innerText = infoDia.metrics.horas;
+            const subtituloHoras = document.getElementById('metric-horas-subtitulo');
+            if (subtituloHoras) {
+                subtituloHoras.innerText = infoDia.metrics.horasSubtitulo || '';
+                subtituloHoras.className = `text-[11px] font-medium mt-0.5 truncate ${infoDia.metrics.horasColor || 'text-rose-600'}`;
+            }
+            const ledHoras = document.getElementById('led-horas-perdidas');
+            if (ledHoras) {
+                const colorLed = infoDia.metrics.horasColor === 'text-emerald-600' ? 'bg-emerald-500 led-green'
+                    : infoDia.metrics.horasColor === 'text-slate-400' ? 'bg-slate-400'
+                    : 'bg-rose-500 led-red';
+                ledHoras.className = `w-2.5 h-2.5 rounded-full ${colorLed}`;
+            }
+
+            renderizarTodasLasCards();
+            actualizarGraficasDependientes(infoDia);
+        }
+
+        function promedioScore(lista) {
+            if (!lista || !lista.length) return 0;
+            const total = lista.reduce((acc, item) => acc + (parseInt(item.score, 10) || 0), 0);
+            return Math.round(total / lista.length);
+        }
+
+        function colorPorPromedio(avg) {
+            if (avg >= 90) return { border: '#22c55e', bg: 'rgba(34, 197, 94, 0.12)', icon: '🟢' };
+            if (avg >= 70) return { border: '#eab308', bg: 'rgba(234, 179, 8, 0.12)', icon: '🟡' };
+            return { border: '#ef4444', bg: 'rgba(239, 68, 68, 0.12)', icon: '🔴' };
+        }
+
+        function contarIncidenciasDeEquipo(incidencias, nombresEquipo) {
+            if (!incidencias) return 0;
+            return incidencias.filter(inc => nombresEquipo.some(n => (inc.afect || '').includes(n))).length;
+        }
+
+        function actualizarGraficasDependientes(infoDia) {
+            // Gráfica de Producción Entregada (barras: Diseño / Videos / Copys por día)
+            if (chartProduccionInstancia) {
+                chartProduccionInstancia.data.datasets[0].data = infoDia.chartProduccion;
+                chartProduccionInstancia.data.datasets[1].data = Array(4).fill(infoDia.editores.length);
+                chartProduccionInstancia.data.datasets[2].data = Array(4).fill(infoDia.community.length);
+                chartProduccionInstancia.update();
+            }
+
+            // Gráfica de Carga por Área (dona)
+            if (chartDeptosInstancia) {
+                chartDeptosInstancia.data.datasets[0].data = [
+                    infoDia.diseno.length, infoDia.editores.length, infoDia.community.length, infoDia.mercadeo.length
+                ];
+                chartDeptosInstancia.update();
+            }
+
+            // Radar Semafórico: promedio de score por equipo
+            if (chartRadarInstancia) {
+                const equipos = [
+                    { key: 'diseno', nombre: 'Diseño' },
+                    { key: 'editores', nombre: 'Editores' },
+                    { key: 'community', nombre: 'Community' },
+                    { key: 'mercadeo', nombre: 'Mercadeo' },
+                    { key: 'programacion', nombre: 'Dev' }
+                ];
+                chartRadarInstancia.data.datasets = equipos.map(eq => {
+                    const avg = promedioScore(infoDia[eq.key]);
+                    const color = colorPorPromedio(avg);
+                    return {
+                        label: `${eq.nombre} (${color.icon} ${avg}%)`,
+                        data: [avg, avg, avg, avg, avg],
+                        borderColor: color.border,
+                        backgroundColor: color.bg
+                    };
+                });
+                chartRadarInstancia.update();
+            }
+
+            // Barras por Departamento: Entregables / Estrategias / Incidencias
+            if (chartBarrasDeptosInstancia) {
+                const equiposBarras = [
+                    { key: 'diseno', nombres: Object.keys(EQUIPO_POR_NOMBRE).filter(n => EQUIPO_POR_NOMBRE[n] === 'diseno') },
+                    { key: 'editores', nombres: Object.keys(EQUIPO_POR_NOMBRE).filter(n => EQUIPO_POR_NOMBRE[n] === 'editores') },
+                    { key: 'community', nombres: Object.keys(EQUIPO_POR_NOMBRE).filter(n => EQUIPO_POR_NOMBRE[n] === 'community') },
+                    { key: 'mercadeo', nombres: Object.keys(EQUIPO_POR_NOMBRE).filter(n => EQUIPO_POR_NOMBRE[n] === 'mercadeo') },
+                    { key: 'programacion', nombres: Object.keys(EQUIPO_POR_NOMBRE).filter(n => EQUIPO_POR_NOMBRE[n] === 'programacion') }
+                ];
+                chartBarrasDeptosInstancia.data.datasets.forEach((dataset, i) => {
+                    const eq = equiposBarras[i];
+                    if (!eq) return;
+                    const entregables = infoDia[eq.key].reduce((acc, item) => acc + (item.entregables ? item.entregables.length : 0), 0);
+                    const incidencias = contarIncidenciasDeEquipo(infoDia.incidencias, eq.nombres);
+                    dataset.data = [entregables, 0, incidencias];
+                });
+                chartBarrasDeptosInstancia.update();
+            }
+        }
+
+        function filtrarPorSemaforo(color) {
+            semaforoFiltroActual = color;
+            document.querySelectorAll('.btn-sem-filter').forEach(b => {
+                b.classList.remove('bg-slate-900', 'text-white');
+                b.classList.add('bg-slate-50', 'text-slate-700');
+            });
+            const activeBtn = document.getElementById('filter-sem-' + color);
+            if (activeBtn) activeBtn.classList.add('bg-slate-900', 'text-white');
+            renderizarTodasLasCards();
+        }
+
+        function filtrarIntegrantes() {
+            renderizarTodasLasCards();
+        }
+
+        function renderizarTodasLasCards() {
+            const infoDia = datosPorDia[diaActual] || datosPorDia['todos'];
+            const busqueda = document.getElementById('input-busqueda').value.toLowerCase();
+
+            const cumpleFiltros = (item) => {
+                const coincideSemaforo = semaforoFiltroActual === 'todos' || item.semaforo === semaforoFiltroActual;
+                const coincideBusqueda = !busqueda || 
+                    item.nombre.toLowerCase().includes(busqueda) || 
+                    item.rol.toLowerCase().includes(busqueda) ||
+                    item.entregables.some(e => e.toLowerCase().includes(busqueda));
+                return coincideSemaforo && coincideBusqueda;
+            };
+
+            renderizarCardsDiseno(infoDia.diseno.filter(cumpleFiltros));
+            renderizarCardsEditores(infoDia.editores.filter(cumpleFiltros));
+            renderizarCardsCommunity(infoDia.community.filter(cumpleFiltros));
+            renderizarCardsMercadeo(infoDia.mercadeo.filter(cumpleFiltros));
+            renderizarCardsProgramacion(infoDia.programacion.filter(cumpleFiltros));
+            renderizarCardsTodos(infoDia, cumpleFiltros);
+            renderizarTablaIncidencias(infoDia.incidencias);
+        }
+
+        function renderizarCardsTodos(infoDia, cumpleFiltros) {
+            const container = document.getElementById('contenedor-cards-todos');
+            if (!container) return;
+
+            const equipos = [
+                { key: 'diseno', etiqueta: 'Diseño', icono: 'fa-pen-nib', color: 'text-blue-900', chip: 'text-blue-900 bg-blue-50 border-blue-100' },
+                { key: 'editores', etiqueta: 'Editores', icono: 'fa-video', color: 'text-purple-700', chip: 'text-purple-700 bg-purple-50 border-purple-100' },
+                { key: 'community', etiqueta: 'Community & PR', icono: 'fa-bullhorn', color: 'text-amber-700', chip: 'text-amber-700 bg-amber-50 border-amber-100' },
+                { key: 'mercadeo', etiqueta: 'Mercadeo', icono: 'fa-chart-line', color: 'text-emerald-700', chip: 'text-emerald-700 bg-emerald-50 border-emerald-100' },
+                { key: 'programacion', etiqueta: 'Dev', icono: 'fa-code', color: 'text-rose-700', chip: 'text-rose-700 bg-rose-50 border-rose-100' }
+            ];
+
+            const seccionesConDatos = equipos
+                .map(eq => ({ ...eq, lista: (infoDia[eq.key] || []).filter(cumpleFiltros) }))
+                .filter(eq => eq.lista.length > 0);
+
+            if (seccionesConDatos.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">Sin integrantes para este filtro. Carga una bitácora para ver a todo el equipo aquí.</p>`;
+                return;
+            }
+
+            container.innerHTML = seccionesConDatos.map(eq => `
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider ${eq.color} flex items-center gap-1.5 pl-1">
+                        <i class="fa-solid ${eq.icono}"></i> ${eq.etiqueta}
+                        <span class="text-slate-300 font-normal normal-case">· ${eq.lista.length} ${eq.lista.length === 1 ? 'integrante' : 'integrantes'}</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        ${eq.lista.map(item => tarjetaHtmlGenerica(item)).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Plantilla de tarjeta compartida por la vista "Todos" (misma estructura visual que cada pestaña individual)
+        function tarjetaHtmlGenerica(item) {
+            const sem = getSemaforoClass(item.semaforo);
+            return `
+                <div onclick="abrirModal('${item.nombre}')" class="bg-white rounded-2xl border-l-4 border-l-${sem.bg.replace('bg-', '')} border border-slate-200 shadow-xs p-4 flex flex-col justify-between space-y-3 card-item cursor-pointer hover:shadow-md transition">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">${item.nombre}</h3>
+                            <span class="text-[10px] text-slate-400 font-medium">${item.rol}</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-[10px] font-bold border rounded-full flex items-center gap-1 ${sem.badge}">
+                            <span class="w-1.5 h-1.5 rounded-full ${sem.bg} ${sem.glow}"></span>
+                            ${item.score}
+                        </span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1 text-xs">
+                        <span class="font-semibold text-slate-700 block">Entregables:</span>
+                        <ul class="list-disc list-inside text-slate-600 space-y-0.5">
+                            ${item.entregables.map(e => `<li>${e}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="p-2 rounded-xl text-[11px] border ${sem.badge}">
+                        <span class="font-bold block"><i class="fa-solid fa-flag mr-1"></i>Observación:</span>
+                        ${item.incidencia}
+                    </div>
+                    <div class="text-center pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-brand-600 font-bold text-[11px]"><i class="fa-solid fa-square-plus mr-1"></i>Ver Detalle</span>
+                        <span class="font-bold text-slate-700">${item.piezas}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderizarCardsDiseno(lista) {
+            const container = document.getElementById('contenedor-cards-diseno');
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 col-span-full text-center py-4">Sin entregables para este filtro.</p>`;
+                return;
+            }
+            container.innerHTML = lista.map(item => {
+                const sem = getSemaforoClass(item.semaforo);
+                return `
+                <div onclick="abrirModal('${item.nombre}')" class="bg-white rounded-2xl border-l-4 border-l-${sem.bg.replace('bg-', '')} border border-slate-200 shadow-xs p-4 flex flex-col justify-between space-y-3 card-item cursor-pointer hover:border-blue-900 hover:shadow-md transition">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">${item.nombre}</h3>
+                            <span class="text-[10px] text-blue-900 font-medium">${item.rol}</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-[10px] font-bold border rounded-full flex items-center gap-1 ${sem.badge}">
+                            <span class="w-1.5 h-1.5 rounded-full ${sem.bg} ${sem.glow}"></span>
+                            ${item.score}
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1 text-xs">
+                        <span class="font-semibold text-slate-700 block">Entregables:</span>
+                        <ul class="list-disc list-inside text-slate-600 space-y-0.5">
+                            ${item.entregables.map(e => `<li>${e}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="p-2 rounded-xl text-[11px] border ${sem.badge}">
+                        <span class="font-bold block"><i class="fa-solid fa-flag mr-1"></i>Observación:</span>
+                        ${item.incidencia}
+                    </div>
+
+                    <div class="text-center pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-blue-900 font-bold text-[11px]"><i class="fa-solid fa-square-plus mr-1"></i>Ver Detalle</span>
+                        <span class="font-bold text-slate-700">${item.piezas}</span>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function renderizarCardsEditores(lista) {
+            const container = document.getElementById('contenedor-cards-editores');
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 col-span-full text-center py-4">Sin entregables para este filtro.</p>`;
+                return;
+            }
+            container.innerHTML = lista.map(item => {
+                const sem = getSemaforoClass(item.semaforo);
+                return `
+                <div onclick="abrirModal('${item.nombre}')" class="bg-white rounded-2xl border-l-4 border-l-${sem.bg.replace('bg-', '')} border border-slate-200 shadow-xs p-4 flex flex-col justify-between space-y-3 card-item cursor-pointer hover:border-brand-300 hover:shadow-md transition">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">${item.nombre}</h3>
+                            <span class="text-[10px] text-slate-400 font-medium">${item.rol}</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-[10px] font-bold border rounded-full flex items-center gap-1 ${sem.badge}">
+                            <span class="w-1.5 h-1.5 rounded-full ${sem.bg} ${sem.glow}"></span>
+                            ${item.score}
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1 text-xs">
+                        <span class="font-semibold text-slate-700 block">Entregables:</span>
+                        <ul class="list-disc list-inside text-slate-600 space-y-0.5">
+                            ${item.entregables.map(e => `<li>${e}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="p-2 rounded-xl text-[11px] border ${sem.badge}">
+                        <span class="font-bold block"><i class="fa-solid fa-flag mr-1"></i>Observación:</span>
+                        ${item.incidencia}
+                    </div>
+
+                    <div class="text-center pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-brand-600 font-bold text-[11px]"><i class="fa-solid fa-square-plus mr-1"></i>Ver Detalle</span>
+                        <span class="font-bold text-slate-700">${item.piezas}</span>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function renderizarCardsCommunity(lista) {
+            const container = document.getElementById('contenedor-cards-community');
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 col-span-full text-center py-4">Sin entregables para este filtro.</p>`;
+                return;
+            }
+            container.innerHTML = lista.map(item => {
+                const sem = getSemaforoClass(item.semaforo);
+                return `
+                <div onclick="abrirModal('${item.nombre}')" class="bg-white rounded-2xl border-l-4 border-l-${sem.bg.replace('bg-', '')} border border-slate-200 shadow-xs p-4 flex flex-col justify-between space-y-3 card-item cursor-pointer hover:border-brand-300 hover:shadow-md transition">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">${item.nombre}</h3>
+                            <span class="text-[10px] text-slate-400 font-medium">${item.rol}</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-[10px] font-bold border rounded-full flex items-center gap-1 ${sem.badge}">
+                            <span class="w-1.5 h-1.5 rounded-full ${sem.bg} ${sem.glow}"></span>
+                            ${item.score}
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1 text-xs">
+                        <span class="font-semibold text-slate-700 block">Entregables:</span>
+                        <ul class="list-disc list-inside text-slate-600 space-y-0.5">
+                            ${item.entregables.map(e => `<li>${e}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="p-2 rounded-xl text-[11px] border ${sem.badge}">
+                        <span class="font-bold block"><i class="fa-solid fa-flag mr-1"></i>Observación:</span>
+                        ${item.incidencia}
+                    </div>
+
+                    <div class="text-center pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-brand-600 font-bold text-[11px]"><i class="fa-solid fa-square-plus mr-1"></i>Ver Detalle</span>
+                        <span class="font-bold text-slate-700">${item.piezas}</span>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function renderizarCardsMercadeo(lista) {
+            const container = document.getElementById('contenedor-cards-mercadeo');
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 col-span-full text-center py-4">Sin entregables para este filtro.</p>`;
+                return;
+            }
+            container.innerHTML = lista.map(item => {
+                const sem = getSemaforoClass(item.semaforo);
+                return `
+                <div onclick="abrirModal('${item.nombre}')" class="bg-white rounded-2xl border-l-4 border-l-${sem.bg.replace('bg-', '')} border border-slate-200 shadow-xs p-4 flex flex-col justify-between space-y-3 card-item cursor-pointer hover:border-brand-300 hover:shadow-md transition">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">${item.nombre}</h3>
+                            <span class="text-[10px] text-slate-400 font-medium">${item.rol}</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-[10px] font-bold border rounded-full flex items-center gap-1 ${sem.badge}">
+                            <span class="w-1.5 h-1.5 rounded-full ${sem.bg} ${sem.glow}"></span>
+                            ${item.score}
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1 text-xs">
+                        <span class="font-semibold text-slate-700 block">Estrategias y Tareas:</span>
+                        <ul class="list-disc list-inside text-slate-600 space-y-0.5">
+                            ${item.entregables.map(e => `<li>${e}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="p-2 rounded-xl text-[11px] border ${sem.badge}">
+                        <span class="font-bold block"><i class="fa-solid fa-flag mr-1"></i>Observación:</span>
+                        ${item.incidencia}
+                    </div>
+
+                    <div class="text-center pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-brand-600 font-bold text-[11px]"><i class="fa-solid fa-square-plus mr-1"></i>Ver Detalle</span>
+                        <span class="font-bold text-slate-700">${item.piezas}</span>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function renderizarCardsProgramacion(lista) {
+            const container = document.getElementById('contenedor-cards-programacion');
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 col-span-full text-center py-4">Sin entregables para este filtro.</p>`;
+                return;
+            }
+            container.innerHTML = lista.map(item => {
+                const sem = getSemaforoClass(item.semaforo);
+                return `
+                <div onclick="abrirModal('${item.nombre}')" class="bg-white rounded-2xl border-l-4 border-l-${sem.bg.replace('bg-', '')} border border-slate-200 shadow-xs p-5 space-y-3 card-item cursor-pointer hover:border-brand-300 hover:shadow-md transition">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base leading-tight">${item.nombre}</h3>
+                            <span class="text-xs text-slate-400 font-medium">${item.rol}</span>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-bold border rounded-full flex items-center gap-1.5 ${sem.badge}">
+                            <span class="w-2 h-2 rounded-full ${sem.bg} ${sem.glow}"></span>
+                            ${item.score}
+                        </span>
+                    </div>
+
+                    <div class="bg-rose-50 p-3 rounded-xl border border-rose-100 space-y-1 text-xs text-rose-900">
+                        <span class="font-bold block flex items-center gap-1.5">
+                            <i class="fa-solid fa-triangle-exclamation text-rose-600"></i> Estado del Reporte:
+                        </span>
+                        <p class="text-slate-700">${item.entregables[0]}</p>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl text-xs text-slate-600 border border-slate-100 flex items-center justify-between">
+                        <div>
+                            <strong class="text-slate-800 block mb-0.5">Impacto Administrativo:</strong>
+                            ${item.incidencia}
+                        </div>
+                        <span class="text-brand-600 font-bold text-[11px] shrink-0 ml-2"><i class="fa-solid fa-square-plus mr-1"></i>Ver Detalle</span>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function renderizarTablaIncidencias(lista) {
+            const tbody = document.getElementById('tabla-incidencias-body');
+            if (!lista || lista.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-xs text-slate-400">Sin incidencias reportadas.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = lista.map(item => {
+                const sem = getSemaforoClass(item.semaforo);
+                return `
+                <tr class="hover:bg-slate-50/80 transition">
+                    <td class="p-2.5 whitespace-nowrap text-center">
+                        <span class="inline-block w-3 h-3 rounded-full ${sem.bg} ${sem.glow}"></span>
+                    </td>
+                    <td class="p-2.5 font-semibold text-slate-900 whitespace-nowrap">${item.dia}</td>
+                    <td class="p-2.5 whitespace-nowrap"><span class="px-2 py-0.5 rounded font-bold text-[10px] border ${sem.badge}">${item.cat}</span></td>
+                    <td class="p-2.5 font-medium text-slate-800">${item.desc}</td>
+                    <td class="p-2.5 font-bold text-slate-700 whitespace-nowrap">${item.afect}</td>
+                    <td class="p-2.5 text-slate-600">${item.sol}</td>
+                </tr>
+            `}).join('');
+        }
+
+        function filtrarTablaIncidenciasPorCat() {
+            const cat = document.getElementById('select-cat-incidencia').value;
+            const listaOriginal = (datosPorDia[diaActual] || datosPorDia['todos']).incidencias;
+            if (cat === 'todas') {
+                renderizarTablaIncidencias(listaOriginal);
+            } else {
+                renderizarTablaIncidencias(listaOriginal.filter(i => i.cat === cat));
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-brand-600', 'text-brand-600', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-slate-500', 'font-medium');
+            });
+            document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+                btn.classList.remove('text-brand-600', 'bg-slate-100');
+                btn.classList.add('text-slate-500');
+            });
+
+            const targetContent = document.getElementById('content-' + tabId);
+            if (targetContent) targetContent.classList.remove('hidden');
+
+            const targetTab = document.getElementById('tab-' + tabId);
+            if (targetTab) {
+                targetTab.classList.remove('border-transparent', 'text-slate-500', 'font-medium');
+                targetTab.classList.add('border-brand-600', 'text-brand-600', 'font-semibold');
+            }
+
+            const targetMobile = document.getElementById('mobile-nav-' + tabId);
+            if (targetMobile) {
+                targetMobile.classList.remove('text-slate-500');
+                if (tabId === 'diseno') {
+                    targetMobile.classList.add('text-blue-900', 'bg-blue-50');
+                } else {
+                    targetMobile.classList.add('text-brand-600', 'bg-slate-100');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx1 = document.getElementById('chartProduccion').getContext('2d');
+            chartProduccionInstancia = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Lun 20', 'Mar 21', 'Mié 22', 'Jue 23'],
+                    datasets: [
+                        { label: 'Diseño', data: [4, 6, 7, 10], backgroundColor: '#1e3a8a', borderRadius: 4 },
+                        { label: 'Videos', data: [9, 6, 4, 8], backgroundColor: '#a855f7', borderRadius: 4 },
+                        { label: 'Copys', data: [8, 17, 16, 15], backgroundColor: '#f59e0b', borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            const ctx2 = document.getElementById('chartDepartamentos').getContext('2d');
+            chartDeptosInstancia = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Diseño Visual', 'Edición Video', 'Community & PR', 'Mercadeo'],
+                    datasets: [{ data: [26, 19, 33, 4], backgroundColor: ['#1e3a8a', '#a855f7', '#f59e0b', '#10b981'] }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+                    cutout: '68%'
+                }
+            });
+
+            const ctxRadar = document.getElementById('chartRadarRendimiento').getContext('2d');
+            chartRadarInstancia = new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Volumen', 'Eficiencia', 'Uso IA', 'Resiliencia', 'Reporte'],
+                    datasets: [
+                        { label: 'Diseño (🟢 92%)', data: [90, 85, 95, 85, 95], borderColor: '#22c55e', backgroundColor: 'rgba(34, 197, 94, 0.12)' },
+                        { label: 'Editores (🟡 84%)', data: [85, 80, 85, 78, 90], borderColor: '#eab308', backgroundColor: 'rgba(234, 179, 8, 0.12)' },
+                        { label: 'Community (🟢 95%)', data: [95, 92, 88, 92, 95], borderColor: '#22c55e', backgroundColor: 'rgba(34, 197, 94, 0.12)' },
+                        { label: 'Mercadeo (🟢 90%)', data: [88, 90, 85, 88, 90], borderColor: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.12)' },
+                        { label: 'Dev (🔴 0%)', data: [0, 0, 0, 0, 0], borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.12)' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+                    scales: { r: { beginAtZero: true, max: 100, ticks: { display: false } } }
+                }
+            });
+
+            const ctxBarras = document.getElementById('chartBarrasDeptos').getContext('2d');
+            chartBarrasDeptosInstancia = new Chart(ctxBarras, {
+                type: 'bar',
+                data: {
+                    labels: ['Entregables', 'Estrategias', 'Incidencias'],
+                    datasets: [
+                        { label: 'Diseño', data: [26, 4, 3], backgroundColor: '#1e3a8a', borderRadius: 4 },
+                        { label: 'Editores', data: [19, 7, 4], backgroundColor: '#a855f7', borderRadius: 4 },
+                        { label: 'Community', data: [33, 12, 1], backgroundColor: '#f59e0b', borderRadius: 4 },
+                        { label: 'Mercadeo', data: [4, 4, 1], backgroundColor: '#10b981', borderRadius: 4 },
+                        { label: 'Dev', data: [0, 0, 1], backgroundColor: '#ef4444', borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            filtrarDia('todos');
+        });
+    </script>
+</body>
+</html>
