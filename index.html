@@ -39,6 +39,10 @@
         .led-yellow { box-shadow: 0 0 8px #eab308; }
         .led-red { box-shadow: 0 0 8px #ef4444; }
         .bg-slate-400 { background-color: #94a3b8; }
+        /* El CSS de Tailwind está precompilado (no hay JIT en el navegador), así que las clases
+           construidas dinámicamente en JS (ej. `border-l-${sem.bg.replace('bg-', '')}` para el
+           semáforo "gray"/sin datos) no existen en el build y no aplican estilo. Se agrega a mano. */
+        .border-l-slate-400 { border-left-color: #94a3b8; }
 
         /* ===== Estilos de Impresión / Guardar como PDF ===== */
         @media print {
@@ -566,6 +570,13 @@
         // Cuando esto está configurado, la clave de Gemini NUNCA viaja al navegador.
         const GEMINI_PROXY_URL = "https://gemini-proxy.isaiascontreras60.workers.dev";
 
+        // Token que el Worker exige en el header "X-Proxy-Token" (comparado ahí contra el Secret
+        // PROXY_SHARED_SECRET de Cloudflare) para frenar el abuso de bots/escaneos automáticos que
+        // encuentran la URL del proxy y la usan gratis. No es un secreto real: como este archivo es
+        // HTML estático, cualquiera que vea el código fuente también lo ve a él — solo filtra tráfico
+        // no dirigido, no protege contra alguien que lea este archivo a propósito.
+        const PROXY_TOKEN = "yP98iFgndqttIWCv4Y7vlS1_XhcJ8GJfCvSPH-ndIII";
+
         let detalleIntegrantes = {
             "Saimary": {
                 nombre: "Saimary",
@@ -983,7 +994,8 @@
                     return;
                 } catch (err) {
                     console.error('Fallo el análisis con Gemini, usando el analizador de texto:', err);
-                    mostrarAvisoActualizacion("⚠️ La IA falló, usando el analizador de texto normal...", true);
+                    const motivo = (err && err.message ? err.message : String(err)).slice(0, 90);
+                    mostrarAvisoActualizacion(`⚠️ IA falló (${motivo}). Usando analizador de texto normal...`, true);
                 }
             }
 
@@ -1045,7 +1057,7 @@ Para cada persona que tenga contenido real en el texto (ignora plantillas vacía
 - "score": porcentaje como texto, ej. "85%". Si no entregó bitácora, "0%".
 - "resumen": UNA sola oración corta (máx 140 caracteres) tipo "Producción de X piezas/videos/posts para [marcas] durante la semana.", con números reales del texto.
 - "incidencia": máx 110 caracteres. La incidencia más relevante, mencionando el día si se puede. Si no hubo, "Sin incidencias mayores registradas.".
-- "minutosPerdidos": ENTERO con el TOTAL de minutos perdidos por fallas esa semana. Suma CADA mención de tiempo relacionada a un problema, de dos formas: (a) duración explícita: "20 minutos"=20, "1 hora y 49 minutos"=109. (b) rango horario: "de 8:40 a 9:00"=20 (la diferencia). Ejemplo: "Falla de 8:40 a 9:00, e interrupción de 2:10 a 2:11" = 20+1 = 21. Revisa TODAS las incidencias de esa persona en toda la semana antes de responder 0.
+- "minutosPerdidos": ENTERO con el TOTAL de minutos perdidos por fallas esa semana. Suma CADA mención de tiempo relacionada a un problema, de dos formas: (a) duración explícita: "20 minutos"=20, "1 hora y 49 minutos"=109. (b) rango horario asociado ESPECÍFICAMENTE a la falla: "de 8:40 a 9:00"=20 (la diferencia). Ejemplo: "Falla de 8:40 a 9:00, e interrupción de 2:10 a 2:11" = 20+1 = 21. Revisa TODAS las incidencias de esa persona en toda la semana antes de responder 0. ⚠️ CUIDADO: NO cuentes como "perdido" el horario normal de trabajo (ej. "10:30am-1pm hice tarea X, 2pm-3:30pm hice tarea Y" son bloques de trabajo PRODUCTIVO, no tiempo perdido) — solo cuenta el tiempo que el texto describe explícitamente como afectado por la falla/corte/error, no todos los horarios que aparezcan cerca en el párrafo.
 - "entregables": máximo 3 strings cortos (máx 70 caracteres cada uno).
 - "piezas": texto corto tipo "17 Piezas" con el conteo TOTAL real (súmalos si aparecen por día).
 - "dias": máximo 4 objetos {"dia": "Lunes", "horas": "8:00 AM - 5:00 PM" (o "Jornada reportada"), "detalle": "resumen brevísimo, máx 90 caracteres"}.
@@ -1110,9 +1122,12 @@ ${texto}
                 ? GEMINI_PROXY_URL.trim()
                 : `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
 
+            const headers = { 'Content-Type': 'application/json' };
+            if (usaProxy && PROXY_TOKEN.trim()) headers['X-Proxy-Token'] = PROXY_TOKEN.trim();
+
             const respuesta = await fetch(url, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers,
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: prompt }] }],
                     generationConfig: { responseMimeType: 'application/json', temperature: 0.2, maxOutputTokens: 8192 }
@@ -1170,7 +1185,7 @@ ${texto}
         }
 
         // Palabras clave (sin acentos, se comparan contra texto ya normalizado) que indican incidencias/tropiezos
-        const PALABRAS_INCIDENCIA = ['corte', 'falla', 'fallo', 'apagon', 'bajon', 'se fue la luz', 'sin luz', 'dano', 'error', 'perdid', 'no funciono', 'no funcionaba', 'internet', 'lent', 'congel', 'colgad', 'reinstal', 'interrup', 'retras', 'bateria', 'corrupt', 'saturacion', 'pausa operativa', 'pausa forzada', 'falta de insumos', 'falta de herramientas', 'falta de material', 'imposibilidad', 'cuello de botella', 'atasc'];
+        const PALABRAS_INCIDENCIA = ['corte', 'falla', 'fallo', 'apagon', 'bajon', 'se fue la luz', 'sin luz', 'dano', 'error del sistema', 'error tecnico', 'mensaje de error', 'perdid', 'no funciono', 'no funcionaba', 'internet', 'lent', 'congel', 'colgad', 'reinstal', 'interrup', 'retras', 'bateria', 'corrupt', 'saturacion', 'pausa operativa', 'pausa forzada', 'falta de insumos', 'falta de herramientas', 'falta de material', 'imposibilidad', 'cuello de botella', 'atasc'];
         // Frases que indican que la bitácora de esa persona NO fue entregada (caso crítico).
         // Deliberadamente específicas (mencionan "hizo" o "bitacora") para no confundirse con notas
         // normales de "no realicé [tarea puntual]" que la gente escribe en secciones que no le aplican ese día.
@@ -1196,13 +1211,47 @@ ${texto}
             return extraerMinutosDeRangoHorario(texto);
         }
 
-        // Detecta duración expresada explícitamente: "1 hora y 49 minutos", "20 minutos", "80 minutos"
+        // Solo extrae horas/minutos de una VENTANA de texto alrededor de cada mención de una palabra
+        // de incidencia, en vez de la línea completa. Esto evita que, en párrafos largos de un solo
+        // renglón que mezclan toda la jornada (ej. "10:30am-1pm hice X, 2pm-3:30pm hice Y..."), se
+        // cuenten como "tiempo perdido" horarios de trabajo normal que no tienen nada que ver con la falla.
+        function extraerMinutosCercaDeIncidencia(texto, palabras) {
+            const textoNorm = normalizarTexto(texto);
+            let total = 0;
+            const ventanasUsadas = [];
+
+            palabras.forEach(p => {
+                const re = new RegExp('\\b' + p.replace(/\s+/g, '\\s+'), 'gi');
+                let m;
+                while ((m = re.exec(textoNorm)) !== null) {
+                    const inicio = Math.max(0, m.index - 200);
+                    const fin = Math.min(texto.length, m.index + p.length + 100);
+                    // Evita procesar dos veces la misma zona si varias palabras clave caen cerca
+                    if (ventanasUsadas.some(([i, f]) => inicio < f && fin > i)) continue;
+                    ventanasUsadas.push([inicio, fin]);
+                    total += extraerMinutosDeTexto(texto.slice(inicio, fin));
+                }
+            });
+
+            return total;
+        }
+
+        // Detecta duración expresada explícitamente: "1 hora y 49 minutos", "20 minutos", "80 minutos",
+        // y también la notación abreviada "1h 20m", "1h20m", "2h" (usada, por ejemplo, en la bitácora
+        // de Alejandro: "1h 20m perdidas por luz/sistema" — antes no se reconocía y sumaba 0 minutos).
         function extraerMinutosExplicitos(texto) {
             let minutos = 0;
             const reHorasMin = /(\d+)\s*(?:horas?|hrs?)\s*(?:y\s*)?(\d+)?\s*(?:minutos?|mins?)?/gi;
             let m;
             const rangosUsados = [];
             while ((m = reHorasMin.exec(texto)) !== null) {
+                minutos += parseInt(m[1], 10) * 60 + (m[2] ? parseInt(m[2], 10) : 0);
+                rangosUsados.push([m.index, m.index + m[0].length]);
+            }
+            // "h\b" exige límite de palabra justo después de la "h" para no volver a capturar la
+            // "h" de "hora(s)"/"hrs" (ya sumada arriba por reHorasMin) como si fuera la abreviatura.
+            const reHorasCorta = /(\d+)\s*h\b(?:\s*(?:y\s*)?(\d+)\s*m\b)?/gi;
+            while ((m = reHorasCorta.exec(texto)) !== null) {
                 minutos += parseInt(m[1], 10) * 60 + (m[2] ? parseInt(m[2], 10) : 0);
                 rangosUsados.push([m.index, m.index + m[0].length]);
             }
@@ -1422,7 +1471,7 @@ ${texto}
                     bloque.critico = l;
                 } else if (contienePalabraClave(lNorm, PALABRAS_INCIDENCIA)) {
                     bloque.incidencias.push(bloque.diaActual ? `${bloque.diaActual}: ${l}` : l);
-                    bloque.minutosPerdidos = (bloque.minutosPerdidos || 0) + extraerMinutosDeTexto(l);
+                    bloque.minutosPerdidos = (bloque.minutosPerdidos || 0) + extraerMinutosCercaDeIncidencia(l, PALABRAS_INCIDENCIA);
                 }
 
                 if (l.includes("smb://") || l.includes("M:\\") || l.includes("\\\\192.168")) {
