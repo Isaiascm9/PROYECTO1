@@ -1511,15 +1511,26 @@ ${texto}
                 // Semáforo según definición: 🟢 90-100% Producción completa sin fallas
                 // 🟡 70-89% Avance moderado con dificultades menores resueltas
                 // 🔴 <70% Bloqueo operativo / tiempo perdido significativo
-                let semaforo = 'green', score = '95%';
+                let semaforo = 'green', score;
                 if (bloque.critico) {
                     semaforo = 'red'; score = '0%';
-                } else if (bloque.incidencias.length >= 3 || bloque.minutosPerdidos >= 120) {
-                    semaforo = 'red'; score = '60%';
-                } else if (bloque.incidencias.length === 2 || bloque.minutosPerdidos >= 45) {
-                    semaforo = 'yellow'; score = '75%';
-                } else if (bloque.incidencias.length === 1) {
-                    semaforo = 'yellow'; score = '85%';
+                } else {
+                    // Puntaje proporcional a incidencias y minutos perdidos reales, en vez de un
+                    // valor fijo por tramo (antes, cualquiera con >=3 incidencias o >=120 min
+                    // perdidos caía siempre en "60%", sin distinguir 2h de 5h perdidas).
+                    const penalizacion = bloque.incidencias.length * 4 + Math.round(bloque.minutosPerdidos / 6);
+                    const base = Math.max(0, 100 - penalizacion);
+                    let n;
+                    if (bloque.incidencias.length >= 3 || bloque.minutosPerdidos >= 120) {
+                        semaforo = 'red'; n = Math.max(30, Math.min(base, 69));
+                    } else if (bloque.incidencias.length === 2 || bloque.minutosPerdidos >= 45) {
+                        semaforo = 'yellow'; n = Math.min(Math.max(base, 70), 89);
+                    } else if (bloque.incidencias.length === 1) {
+                        semaforo = 'yellow'; n = Math.min(Math.max(base, 70), 89);
+                    } else {
+                        semaforo = 'green'; n = Math.min(Math.max(base, 90), 100);
+                    }
+                    score = `${n}%`;
                 }
 
                 const truncar = (s, max) => (s && s.length > max) ? s.slice(0, max - 1).trim() + '…' : s;
