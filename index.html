@@ -971,11 +971,15 @@
             if (usarIA) {
                 mostrarAvisoActualizacion("🤖 Analizando con IA (Gemini)...", false);
                 try {
-                    const actualizados = await analizarConGemini(texto, apiKey);
+                    const { actualizados, incompleto } = await analizarConGemini(texto, apiKey);
                     cerrarModalCarga();
                     switchTab('todos');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    mostrarAvisoActualizacion(`🤖 IA: ${actualizados} integrante(s) analizados con Gemini.`, false);
+                    if (incompleto) {
+                        mostrarAvisoActualizacion(`⚠️ IA: solo ${actualizados} integrante(s) (la respuesta se cortó por tamaño). Vuelve a cargarla para completar al resto.`, true);
+                    } else {
+                        mostrarAvisoActualizacion(`🤖 IA: ${actualizados} integrante(s) analizados con Gemini.`, false);
+                    }
                     return;
                 } catch (err) {
                     console.error('Fallo el análisis con Gemini, usando el analizador de texto:', err);
@@ -1030,20 +1034,22 @@
             const nombres = Object.keys(detalleIntegrantes);
             return `Eres un analista de operaciones. Vas a leer bitácoras semanales de un equipo de marketing y debes extraer, para cada persona mencionada, un resumen estructurado en JSON.
 
-INTEGRANTES CONOCIDOS (usa el nombre EXACTO tal como aparece en esta lista, incluyendo tildes; ignora a cualquier persona que no esté en esta lista):
+INTEGRANTES CONOCIDOS (usa el nombre tal como aparece en esta lista; si el texto lo escribe distinto —ej. sin tildes—, usa igual el de esta lista. Ignora a cualquier persona que no esté en esta lista):
 ${nombres.join(', ')}
 
+⚠️ MUY IMPORTANTE: hay ${nombres.length} integrantes conocidos y probablemente varios de ellos aparecen en el texto. Es OBLIGATORIO que incluyas a TODAS las personas que tengan contenido real, sin excepción — es mucho más importante cubrir a todas que dar mucho detalle en cada una. SÉ BREVE en cada campo (ver límites de caracteres abajo) para que te alcance el espacio y no se corte la respuesta antes de terminar con todos.
+
 Para cada persona que tenga contenido real en el texto (ignora plantillas vacías), devuelve un objeto con estos campos:
-- "nombre": el nombre exacto de la lista de arriba.
-- "semaforo": "green" si tuvo una semana de producción completa sin fallas (90-100%), "yellow" si hubo dificultades menores ya resueltas (70-89%), "red" si hubo un bloqueo operativo o tiempo perdido significativo (<70%), o si la persona NO entregó su bitácora (busca frases como "NO LA HIZO").
-- "score": el porcentaje como texto, ej. "85%". Si la bitácora no fue entregada, "0%".
-- "resumen": UNA sola oración natural tipo "Producción de X piezas/videos/posts para [marcas mencionadas] durante la semana.", con números reales extraídos del texto.
-- "incidencia": descripción breve (máx 150 caracteres) de la incidencia/problema más relevante de la semana, mencionando en qué día ocurrió si se puede. Si no hubo incidencias, escribe "Sin incidencias mayores registradas.".
-- "minutosPerdidos": número entero de minutos perdidos por fallas/incidencias esa semana, sumando TODAS las menciones de tiempo perdido (duraciones explícitas como "20 minutos" y también diferencias entre rangos horarios como "de 8:40 a 9:00"). Si no hay ninguna mención de tiempo, usa 0.
-- "entregables": lista de máximo 4 strings cortos (menos de 90 caracteres cada uno) describiendo los entregables/piezas más importantes de la semana.
-- "piezas": texto corto tipo "17 Piezas" con el conteo TOTAL real de piezas/videos/posts entregados en la semana (súmalos si aparecen por día).
-- "dias": lista de objetos {"dia": "Lunes", "horas": "8:00 AM - 5:00 PM" (o el rango que menciona el texto, o "Jornada reportada" si no hay), "detalle": "resumen breve de lo que hizo ese día"}, uno por cada día que reportó actividad.
-- "ruta": la ruta de servidor mencionada (ej. "smb://..." o "M:\\..."), o cadena vacía si no hay.
+- "nombre": el nombre de la lista de arriba.
+- "semaforo": "green" (90-100%, sin fallas), "yellow" (70-89%, dificultades menores resueltas), "red" (<70%, bloqueo operativo o tiempo perdido significativo, o bitácora no entregada — busca frases como "NO LA HIZO").
+- "score": porcentaje como texto, ej. "85%". Si no entregó bitácora, "0%".
+- "resumen": UNA sola oración corta (máx 140 caracteres) tipo "Producción de X piezas/videos/posts para [marcas] durante la semana.", con números reales del texto.
+- "incidencia": máx 110 caracteres. La incidencia más relevante, mencionando el día si se puede. Si no hubo, "Sin incidencias mayores registradas.".
+- "minutosPerdidos": ENTERO con el TOTAL de minutos perdidos por fallas esa semana. Suma CADA mención de tiempo relacionada a un problema, de dos formas: (a) duración explícita: "20 minutos"=20, "1 hora y 49 minutos"=109. (b) rango horario: "de 8:40 a 9:00"=20 (la diferencia). Ejemplo: "Falla de 8:40 a 9:00, e interrupción de 2:10 a 2:11" = 20+1 = 21. Revisa TODAS las incidencias de esa persona en toda la semana antes de responder 0.
+- "entregables": máximo 3 strings cortos (máx 70 caracteres cada uno).
+- "piezas": texto corto tipo "17 Piezas" con el conteo TOTAL real (súmalos si aparecen por día).
+- "dias": máximo 4 objetos {"dia": "Lunes", "horas": "8:00 AM - 5:00 PM" (o "Jornada reportada"), "detalle": "resumen brevísimo, máx 90 caracteres"}.
+- "ruta": ruta de servidor mencionada, o "" si no hay.
 
 Responde ÚNICAMENTE con un JSON válido con esta forma exacta, sin texto adicional, sin markdown, sin \`\`\`:
 {"personas": [ { "nombre": "...", "semaforo": "...", "score": "...", "resumen": "...", "incidencia": "...", "minutosPerdidos": 0, "entregables": ["..."], "piezas": "...", "dias": [{"dia":"...","horas":"...","detalle":"..."}], "ruta": "..." } ]}
@@ -1052,6 +1058,49 @@ TEXTO DE LA BITÁCORA A ANALIZAR:
 """
 ${texto}
 """`;
+        }
+
+        // Parsea el JSON de personas de forma tolerante: si la respuesta de Gemini se cortó a la
+        // mitad (por límite de tamaño), rescata todos los objetos de persona que llegaron completos
+        // en vez de perder toda la respuesta por un JSON.parse() fallido.
+        function parsearJsonPersonasConRecuperacion(textoJson) {
+            try {
+                const resultado = JSON.parse(textoJson);
+                return { personas: Array.isArray(resultado.personas) ? resultado.personas : [], incompleto: false };
+            } catch (e) {
+                const personas = [];
+                const inicioClave = textoJson.indexOf('"personas"');
+                if (inicioClave === -1) return { personas: [], incompleto: true };
+
+                let i = textoJson.indexOf('[', inicioClave);
+                if (i === -1) return { personas: [], incompleto: true };
+                i++;
+
+                while (i < textoJson.length) {
+                    while (i < textoJson.length && /[\s,]/.test(textoJson[i])) i++;
+                    if (textoJson[i] !== '{') break;
+
+                    let profundidad = 0, inicioObj = i, dentroString = false, escape = false, j = i;
+                    for (; j < textoJson.length; j++) {
+                        const c = textoJson[j];
+                        if (escape) { escape = false; continue; }
+                        if (c === '\\') { escape = true; continue; }
+                        if (c === '"') { dentroString = !dentroString; continue; }
+                        if (dentroString) continue;
+                        if (c === '{') profundidad++;
+                        if (c === '}') {
+                            profundidad--;
+                            if (profundidad === 0) { j++; break; }
+                        }
+                    }
+                    if (profundidad !== 0) break; // objeto cortado a la mitad: se descarta
+
+                    try { personas.push(JSON.parse(textoJson.slice(inicioObj, j))); } catch (e2) { /* objeto individual dañado, se salta */ }
+                    i = j;
+                }
+
+                return { personas, incompleto: true };
+            }
         }
 
         async function analizarConGemini(texto, apiKey) {
@@ -1066,7 +1115,7 @@ ${texto}
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: { responseMimeType: 'application/json', temperature: 0.2 }
+                    generationConfig: { responseMimeType: 'application/json', temperature: 0.2, maxOutputTokens: 8192 }
                 })
             });
 
@@ -1076,23 +1125,28 @@ ${texto}
             }
 
             const data = await respuesta.json();
+            const razonCorte = data?.candidates?.[0]?.finishReason;
             const textoJson = data?.candidates?.[0]?.content?.parts?.[0]?.text;
             if (!textoJson) throw new Error('Gemini no devolvió contenido utilizable.');
 
-            let resultado;
-            try {
-                resultado = JSON.parse(textoJson);
-            } catch (e) {
-                throw new Error('La respuesta de Gemini no fue un JSON válido: ' + e.message);
+            const { personas, incompleto } = parsearJsonPersonasConRecuperacion(textoJson);
+            if (razonCorte === 'MAX_TOKENS') {
+                console.warn('La respuesta de Gemini se cortó por límite de tamaño; se recuperaron los integrantes que llegaron completos.');
             }
-
-            const personas = Array.isArray(resultado.personas) ? resultado.personas : [];
-            const nombresConocidos = new Set(Object.keys(detalleIntegrantes));
+            // Comparamos sin importar tildes: a veces Gemini devuelve "Angel" en vez de "Ángel"
+            // (tal como aparece escrito en el texto original), y no queremos perder a esa persona por eso.
+            const nombresPorNormalizado = {};
+            Object.keys(detalleIntegrantes).forEach(n => { nombresPorNormalizado[normalizarTexto(n)] = n; });
             let actualizados = 0;
 
             personas.forEach(p => {
-                if (!p || !nombresConocidos.has(p.nombre)) return;
-                const ok = aplicarDatosPersona(p.nombre, {
+                if (!p || !p.nombre) return;
+                const nombreReal = nombresPorNormalizado[normalizarTexto(p.nombre)];
+                if (!nombreReal) {
+                    console.warn('Gemini devolvió un nombre no reconocido, se ignora:', p.nombre);
+                    return;
+                }
+                const ok = aplicarDatosPersona(nombreReal, {
                     semaforo: ['green', 'yellow', 'red'].includes(p.semaforo) ? p.semaforo : 'yellow',
                     score: typeof p.score === 'string' ? p.score : '85%',
                     incidencia: p.incidencia || 'Sin incidencias mayores registradas.',
@@ -1112,10 +1166,9 @@ ${texto}
             }
 
             filtrarDia(diaActual);
-            return actualizados;
+            return { actualizados, incompleto };
         }
 
-        // Palabras clave que indican incidencias/tropiezos operativos dentro de una bitácora
         // Palabras clave (sin acentos, se comparan contra texto ya normalizado) que indican incidencias/tropiezos
         const PALABRAS_INCIDENCIA = ['corte', 'falla', 'fallo', 'apagon', 'bajon', 'se fue la luz', 'sin luz', 'dano', 'error', 'perdid', 'no funciono', 'no funcionaba', 'internet', 'lent', 'congel', 'colgad', 'reinstal', 'interrup', 'retras', 'bateria', 'corrupt', 'saturacion', 'pausa operativa', 'pausa forzada', 'falta de insumos', 'falta de herramientas', 'falta de material', 'imposibilidad', 'cuello de botella', 'atasc'];
         // Frases que indican que la bitácora de esa persona NO fue entregada (caso crítico).
@@ -1248,21 +1301,11 @@ ${texto}
             };
 
             lineas.forEach(l => {
-                const tieneTotal = new RegExp('=\\s*\\d+\\s*(?:' + TIPO_RE + ')', 'i').test(l);
-
-                if (tieneTotal) {
-                    // Línea de resumen con total explícito (ej. "[...] = 3 piezas"): solo tomamos el total,
-                    // para no sumar también los sub-conteos entre corchetes que ya están incluidos en él.
-                    const mTotal = l.match(new RegExp('=\\s*(\\d+)\\s*(' + TIPO_RE + ')', 'i'));
-                    if (mTotal) sumarTipo(mTotal[2], parseInt(mTotal[1], 10));
-                } else {
-                    // Línea narrativa sin "=": buscamos menciones sueltas tipo "14 historias", "2 videos"
-                    const reSuelto = new RegExp('(\\d+)\\s*(' + TIPO_RE + ')\\b', 'gi');
-                    let m;
-                    while ((m = reSuelto.exec(l)) !== null) {
-                        sumarTipo(m[2], parseInt(m[1], 10));
-                    }
-                }
+                // Solo confiamos en totales EXPLÍCITOS ("[...] = 3 piezas"). Contar también menciones
+                // sueltas en la narrativa (ej. "se hicieron 5 estructuras... total 17 estructuras")
+                // duplicaba o inflaba los números, porque la gente repite sub-conteos y totales en prosa.
+                const mTotal = l.match(new RegExp('=\\s*(\\d+)\\s*(' + TIPO_RE + ')', 'i'));
+                if (mTotal) sumarTipo(mTotal[2], parseInt(mTotal[1], 10));
 
                 const mMarca = l.match(/\(Marcas?:\s*([^)]+)\)/i);
                 if (mMarca) {
@@ -1311,9 +1354,14 @@ ${texto}
 
             // Busca coincidencia dentro de líneas largas tipo "Bitácora - Nombre Completo / Rol..."
             function buscarNombrePorTitulo(lineaNorm) {
-                if (!lineaNorm.includes('bitacora')) return null;
+                const idx = lineaNorm.indexOf('bitacora');
+                if (idx === -1) return null;
+                // Solo miramos los ~80 caracteres siguientes a "bitacora" (donde va el nombre en
+                // títulos reales como "Bitácora - Fabio Elias / Editor..."), no todo el párrafo,
+                // para no confundir una mención lejana del nombre de un compañero en un texto largo.
+                const ventana = lineaNorm.slice(idx, idx + 80);
                 for (const info of nombresConocidos) {
-                    if (lineaNorm.includes(info.norm)) return info.original;
+                    if (ventana.includes(info.norm)) return info.original;
                 }
                 return null;
             }
@@ -1391,18 +1439,25 @@ ${texto}
 
                 personasActualizadas++;
 
-                // Líneas que parecen entregables. Priorizamos líneas de "resumen" (ej. "= 3 piezas")
-                // sobre párrafos narrativos largos, y truncamos todo a un tamaño legible en una tarjeta.
-                const lineasCandidatas = bloque.lineas.filter(l => l !== bloque.critico);
-                const resumenes = lineasCandidatas.filter(l => /=\s*\d+\s*(pieza|piezas|post|posts|video|videos|entregable|entregables|banner|banners|empaque|empaques|anuncio|anuncios)/i.test(l));
-                const otras = lineasCandidatas.filter(l => !resumenes.includes(l) && (/^[-*•]/.test(l) || /^\d+[\.\)]/.test(l) || l.length > 8));
+                // Líneas que parecen entregables. Solo miramos contenido que quedó DENTRO de un día
+                // detectado (ignora automáticamente títulos e instrucciones de plantilla que vienen
+                // antes del primer "📅 DÍA:", sin tener que adivinar frases de plantilla una por una).
+                const lineasConDia = bloque.ordenDias.length
+                    ? bloque.ordenDias.flatMap(d => bloque.dias[d].lineas)
+                    : bloque.lineas;
+                const lineasCandidatas = lineasConDia.filter(l => l !== bloque.critico && !(l.length <= 40 && extraerDiaDeLinea(l)));
 
-                const entregablesDetectados = [...resumenes, ...otras]
-                    .map(l => l.replace(/^[-*•]\s*/, '').replace(/^\d+[\.\)]\s*/, '').trim())
+                const resumenesExplicitos = lineasCandidatas.filter(l => /^(piezas realizadas|entregables?|resultados?)\s*:/i.test(l.trim()));
+                const resumenesConTotal = lineasCandidatas.filter(l => !resumenesExplicitos.includes(l) && /=\s*\d+\s*(pieza|piezas|post|posts|video|videos|entregable|entregables|banner|banners|empaque|empaques|anuncio|anuncios)/i.test(l));
+                const bulletsCortos = lineasCandidatas.filter(l => !resumenesExplicitos.includes(l) && !resumenesConTotal.includes(l) && /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ\s]{2,25}:\s+\S/.test(l.trim()) && l.length <= 160);
+                const otras = lineasCandidatas.filter(l => ![...resumenesExplicitos, ...resumenesConTotal, ...bulletsCortos].includes(l) && (/^[-*•]/.test(l) || /^\d+[\.\)]/.test(l) || l.length > 8));
+
+                const entregablesDetectados = [...resumenesExplicitos, ...resumenesConTotal, ...bulletsCortos, ...otras]
+                    .map(l => l.replace(/^[-*•]\s*/, '').replace(/^\d+[\.\)]\s*/, '').replace(/^(piezas realizadas|entregables?|resultados?)\s*:\s*/i, '').trim())
                     .map(l => l.length > 100 ? l.slice(0, 97).trim() + '…' : l)
                     .slice(0, 4);
 
-                const piezasTotales = contarPiezasTotales(bloque.lineas);
+                const piezasTotales = contarPiezasTotales(lineasConDia);
 
                 // Semáforo según definición: 🟢 90-100% Producción completa sin fallas
                 // 🟡 70-89% Avance moderado con dificultades menores resueltas
@@ -1446,7 +1501,9 @@ ${texto}
                     incidencia: textoIncidencia,
                     minutosPerdidos: bloque.minutosPerdidos || 0,
                     ruta: bloque.ruta,
-                    resumen: entregablesDetectados.length ? (construirResumenEjecutivo(bloque.lineas) || entregablesDetectados.slice(0, 2).join(' ')) : null,
+                    resumen: entregablesDetectados.length
+                        ? (construirResumenEjecutivo(lineasConDia) || entregablesDetectados.slice(0, 2).join(' '))
+                        : null,
                     dias,
                     entregables: entregablesDetectados,
                     piezas: piezasTotales > 0 ? `${piezasTotales} Piezas` : (entregablesDetectados.length ? `${entregablesDetectados.length} Entregables` : null),
