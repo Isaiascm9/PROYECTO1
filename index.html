@@ -1294,7 +1294,7 @@ ${texto}
                 let m;
                 while ((m = re.exec(textoNorm)) !== null) {
                     const inicio = Math.max(0, m.index - 200);
-                    const fin = Math.min(texto.length, m.index + p.length + 100);
+                    const fin = Math.min(texto.length, m.index + p.length + 220);
                     // Evita procesar dos veces la misma zona si varias palabras clave caen cerca
                     if (ventanasUsadas.some(([i, f]) => inicio < f && fin > i)) continue;
                     ventanasUsadas.push([inicio, fin]);
@@ -1488,7 +1488,7 @@ ${texto}
             const bloques = {};
 
             const asegurarBloque = (nombre) => {
-                if (!bloques[nombre]) bloques[nombre] = { lineas: [], incidencias: [], ruta: null, critico: null, minutosPerdidos: 0, dias: {}, ordenDias: [], diaActual: null };
+                if (!bloques[nombre]) bloques[nombre] = { lineas: [], incidencias: [], ruta: null, critico: null, minutosPerdidos: 0, dias: {}, ordenDias: [], diaActual: null, dentroIncidencias: false, totalAcumuladoContadoHoy: false };
                 return bloques[nombre];
             };
 
@@ -1527,6 +1527,8 @@ ${texto}
                 const diaDetectado = extraerDiaDeLinea(l);
                 if (diaDetectado) {
                     bloque.diaActual = diaDetectado;
+                    bloque.dentroIncidencias = false;
+                    bloque.totalAcumuladoContadoHoy = false;
                     if (!bloque.dias[diaDetectado]) {
                         bloque.dias[diaDetectado] = { lineas: [] };
                         bloque.ordenDias.push(diaDetectado);
@@ -1536,11 +1538,32 @@ ${texto}
                     bloque.dias[bloque.diaActual].lineas.push(l);
                 }
 
+                // Solo contamos minutos/incidencias dentro de la sección "⚠️ Incidencias del Día"
+                // declarada por la persona — no en "Reporte de hoy" ni "Pautas/Grabaciones", donde
+                // un horario de trabajo NORMAL puede caer cerca de una palabra clave (ej. "fallo
+                // técnico" explicando por qué se repitió una grabación) y contarse por error como
+                // tiempo perdido. Sin esto, cualquier mención incidental de "corte"/"falla" en la
+                // narrativa del día inflaba el total de minutos perdidos varias veces por semana.
+                if (/incidencias del d[ií]a|plan de accion/.test(lNorm) && l.length < 250) {
+                    bloque.dentroIncidencias = true;
+                } else if (diaDetectado || /^(rutas del servidor|📁)/i.test(l) || /^[🎨📝📱🌐⏱🤝📦📸]/.test(l)) {
+                    bloque.dentroIncidencias = false;
+                }
+
                 if (contieneFraseCritica) {
                     bloque.critico = l;
-                } else if (contienePalabraClave(lNorm, PALABRAS_INCIDENCIA)) {
+                } else if (bloque.dentroIncidencias && contienePalabraClave(lNorm, PALABRAS_INCIDENCIA)) {
                     bloque.incidencias.push(bloque.diaActual ? `${bloque.diaActual}: ${l}` : l);
-                    bloque.minutosPerdidos = (bloque.minutosPerdidos || 0) + extraerMinutosCercaDeIncidencia(l, PALABRAS_INCIDENCIA);
+                    // Cuando alguien ya declaró un total explícito para el día (ej. "interrupción
+                    // acumulada de 1 hora y 20 minutos") y luego lo desglosa en líneas separadas con
+                    // sus propios horarios, esas líneas de desglose ya están incluidas en ese total
+                    // — sumarlas de nuevo duplicaría el conteo. Solo se cuenta la primera vez.
+                    if (!bloque.totalAcumuladoContadoHoy) {
+                        bloque.minutosPerdidos = (bloque.minutosPerdidos || 0) + extraerMinutosCercaDeIncidencia(l, PALABRAS_INCIDENCIA);
+                    }
+                    if (/acumulad/.test(lNorm) && extraerMinutosExplicitos(l) > 0) {
+                        bloque.totalAcumuladoContadoHoy = true;
+                    }
                 }
 
                 if (l.includes("smb://") || l.includes("M:\\") || l.includes("\\\\192.168")) {
