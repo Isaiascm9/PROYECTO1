@@ -1115,14 +1115,19 @@ Para cada persona que tenga contenido real en el texto (ignora plantillas vacía
 - "score": porcentaje como texto, ej. "85%". Varía el número según la gravedad real (no uses siempre el mismo número redondo tipo 90% o 95% para todos) — más incidencias o más minutos perdidos = número más bajo dentro de su rango. Si no entregó bitácora, "0%".
 - "resumen": UNA sola oración corta (máx 140 caracteres) tipo "Producción de X piezas/videos/posts para [marcas] durante la semana.", con números reales del texto.
 - "incidencia": máx 110 caracteres. La incidencia más relevante, mencionando el día si se puede. Si no hubo, "Sin incidencias mayores registradas.".
+- "planAccion": máx 90 caracteres. Qué se hizo (o debería hacerse) para resolver o mitigar esa incidencia — una acción concreta, no una frase vacía tipo "se resolvió". Ej: "Pausa forzada durante el corte; se retomó al restablecerse la luz." o "Migración temporal a otro equipo mientras se reinstalaba el software." Si no hubo incidencia, "".
 - "minutosPerdidos": ENTERO con el TOTAL de minutos perdidos por fallas esa semana. Suma CADA mención de tiempo relacionada a un problema, de dos formas: (a) duración explícita: "20 minutos"=20, "1 hora y 49 minutos"=109. (b) rango horario asociado ESPECÍFICAMENTE a la falla: "de 8:40 a 9:00"=20 (la diferencia). Ejemplo: "Falla de 8:40 a 9:00, e interrupción de 2:10 a 2:11" = 20+1 = 21. Revisa TODAS las incidencias de esa persona en toda la semana antes de responder 0. ⚠️ CUIDADO: NO cuentes como "perdido" el horario normal de trabajo (ej. "10:30am-1pm hice tarea X, 2pm-3:30pm hice tarea Y" son bloques de trabajo PRODUCTIVO, no tiempo perdido) — solo cuenta el tiempo que el texto describe explícitamente como afectado por la falla/corte/error, no todos los horarios que aparezcan cerca en el párrafo.
-- "entregables": máximo 3 strings cortos (máx 70 caracteres cada uno).
+- "entregables": entre 2 y 4 strings cortos y ESPECÍFICOS (máx 70 caracteres cada uno) — con cantidades y marcas reales, no descripciones genéricas. Ej: "3 Posts (Bona Vita/Monalisa)" en vez de "Posts para clientes".
 - "piezas": texto corto tipo "17 Piezas" con el conteo TOTAL real (súmalos si aparecen por día).
 - "dias": máximo 4 objetos {"dia": "Lunes", "horas": "8:00 AM - 5:00 PM" (o "Jornada reportada"), "detalle": "resumen de lo que hizo ese día, máx 320 caracteres — suficiente para entender el trabajo real, no un título genérico de una línea"}.
 - "ruta": ruta de servidor mencionada, o "" si no hay.
 
+EJEMPLO DE LA CALIDAD Y NIVEL DE DETALLE ESPERADO (usa este mismo estilo, no lo copies literal — es solo referencia de formato):
+{"nombre": "Saimary", "semaforo": "yellow", "score": "82%", "resumen": "Producción de 17 piezas gráficas para Bona Vita, Monalisa y Zed durante la semana.", "incidencia": "Miércoles 22: Corte eléctrico de 8:40 a 9:00 AM e interrupción breve a las 2:10 PM.", "planAccion": "Pausa forzada durante el corte; se retomó el trabajo al restablecerse la luz.", "minutosPerdidos": 21, "entregables": ["3 Posts (Bona Vita/Monalisa)", "2 Banners Shopify Zed", "8 Anuncios Zed", "1 Banner FAQ Zed"], "piezas": "17 Piezas", "dias": [{"dia": "Martes 21", "horas": "8:00 AM - 5:00 PM", "detalle": "Redacción del Formato de Procesos (Sílice) y explicación al equipo sobre el llenado de la planilla. Corrección de un diseño previo de Bona Vita con ayuda de IA (Gemini), ajustando detalles del empaque. Montaje de post para Monalisa junto a la CM Fabiana."}], "ruta": "M:\\\\Bitacoras\\\\Saimary\\\\Semana 21 al 23 de julio"}
+Nota cómo el score NO es un número redondo genérico, el semáforo refleja la incidencia real con hora exacta, el plan de acción es concreto (no una frase vacía), los entregables tienen cantidades y marcas concretas, y el detalle del día cuenta lo que realmente se hizo (no un título de una línea).
+
 Responde ÚNICAMENTE con un JSON válido con esta forma exacta, sin texto adicional, sin markdown, sin \`\`\`:
-{"personas": [ { "nombre": "...", "semaforo": "...", "score": "...", "resumen": "...", "incidencia": "...", "minutosPerdidos": 0, "entregables": ["..."], "piezas": "...", "dias": [{"dia":"...","horas":"...","detalle":"..."}], "ruta": "..." } ]}
+{"personas": [ { "nombre": "...", "semaforo": "...", "score": "...", "resumen": "...", "incidencia": "...", "planAccion": "...", "minutosPerdidos": 0, "entregables": ["..."], "piezas": "...", "dias": [{"dia":"...","horas":"...","detalle":"..."}], "ruta": "..." } ]}
 
 TEXTO DE LA BITÁCORA A ANALIZAR:
 """
@@ -1223,6 +1228,7 @@ ${texto}
                     semaforo: ['green', 'yellow', 'red'].includes(p.semaforo) ? p.semaforo : 'yellow',
                     score: typeof p.score === 'string' ? p.score : '85%',
                     incidencia: p.incidencia || 'Sin incidencias mayores registradas.',
+                    planAccion: p.planAccion || null,
                     minutosPerdidos: parseInt(p.minutosPerdidos, 10) || 0,
                     ruta: p.ruta || null,
                     resumen: p.resumen || null,
@@ -1659,7 +1665,7 @@ ${texto}
         // Agrega (o reemplaza) la fila de esta persona en la tabla de incidencias, a partir del
         // texto de incidencia ya calculado por el analizador de texto o por Gemini. Único punto
         // de escritura para datosPorDia.todos.incidencias, así queda igual sin importar el método.
-        function actualizarFilaIncidencia(nombre, incidenciaTexto, semaforo) {
+        function actualizarFilaIncidencia(nombre, incidenciaTexto, semaforo, planAccion) {
             const lista = datosPorDia.todos.incidencias;
             const idx = lista.findIndex(i => i.afect === nombre);
             const texto = (incidenciaTexto || '').trim();
@@ -1677,7 +1683,9 @@ ${texto}
                 cat: categorizarIncidencia(normalizarTexto(texto)),
                 desc: texto,
                 afect: nombre,
-                sol: 'Pendiente de definir plan de acción.'
+                // El analizador de texto no puede inferir un plan de acción real de un párrafo
+                // libre, así que solo usamos uno cuando lo trae la IA (Gemini); si no, placeholder.
+                sol: (planAccion && planAccion.trim()) ? planAccion.trim() : 'Pendiente de definir plan de acción.'
             };
             if (idx !== -1) lista[idx] = fila; else lista.push(fila);
         }
@@ -1694,7 +1702,7 @@ ${texto}
             if (datos.resumen) detalle.resumen = datos.resumen;
             if (datos.dias && datos.dias.length) detalle.dias = datos.dias;
 
-            actualizarFilaIncidencia(nombre, detalle.incidencia, detalle.semaforo);
+            actualizarFilaIncidencia(nombre, detalle.incidencia, detalle.semaforo, datos.planAccion);
 
             const equipoDeEstePersona = EQUIPO_POR_NOMBRE[nombre];
             if (equipoDeEstePersona && datosPorDia.todos[equipoDeEstePersona]) {
