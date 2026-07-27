@@ -1652,14 +1652,26 @@ ${texto}
         // Clasificación aproximada por palabras clave, solo para la columna "Categoría" de la
         // tabla de incidencias (no afecta el semáforo ni el score, que ya vienen calculados).
         function categorizarIncidencia(textoNorm) {
+            // Orden de más específico a más genérico: cuando una incidencia combina varios temas
+            // en una sola oración (ej. "batería del teclado, cortes de luz y fallas de IA"), la
+            // categoría más concreta (Hardware/IA) debe ganarle a la más genérica (Energía).
             if (contienePalabraClave(textoNorm, ['no la hizo', 'no lo hizo', 'bitacora no', 'no envio bitacora', 'no entrego bitacora'])) return 'Administración';
-            if (contienePalabraClave(textoNorm, ['corte', 'apagon', 'bajon', 'se fue la luz', 'sin luz', 'electric'])) return 'Energía';
             if (contienePalabraClave(textoNorm, ['pc ', 'congel', 'colgad', 'disco', 'bateria', 'teclado', 'hardware'])) return 'Hardware';
             if (contienePalabraClave(textoNorm, ['inteligencia artificial', ' ia ', 'prompt', 'gemini', 'higgsfield'])) return 'IA';
-            if (contienePalabraClave(textoNorm, ['internet', 'software', 'error del sistema', 'reinstal', 'error tecnico'])) return 'Software';
             if (contienePalabraClave(textoNorm, ['falta de insumos', 'falta de material', 'falta de herramientas'])) return 'Producción';
             if (contienePalabraClave(textoNorm, ['mrw', 'envio', 'logistic'])) return 'Logística';
+            if (contienePalabraClave(textoNorm, ['internet', 'software', 'error del sistema', 'reinstal', 'error tecnico'])) return 'Software';
+            if (contienePalabraClave(textoNorm, ['corte', 'apagon', 'bajon', 'se fue la luz', 'sin luz', 'electric'])) return 'Energía';
             return 'Administración';
+        }
+
+        // Busca cualquier día de la semana mencionado en el texto (al inicio, en medio o al final
+        // de la oración — no solo como prefijo "Día: ..."), con el número de fecha si aparece cerca.
+        function extraerDiaDeIncidencia(texto) {
+            const m = texto.match(/\b(lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)\b(?:\s+(\d{1,2}))?/i);
+            if (!m) return 'Semanal';
+            const dia = capitalizarPalabra(m[1]);
+            return m[2] ? `${dia} ${m[2]}` : dia;
         }
 
         // Agrega (o reemplaza) la fila de esta persona en la tabla de incidencias, a partir del
@@ -1676,10 +1688,9 @@ ${texto}
                 return;
             }
 
-            const matchDia = texto.match(/^([A-Za-zÀ-ÿ]+(?:\s+\d{1,2})?)\s*:/);
             const fila = {
                 semaforo,
-                dia: matchDia ? matchDia[1] : 'Semanal',
+                dia: extraerDiaDeIncidencia(texto),
                 cat: categorizarIncidencia(normalizarTexto(texto)),
                 desc: texto,
                 afect: nombre,
