@@ -1174,7 +1174,7 @@ ${texto}
             const usaProxy = !!GEMINI_PROXY_URL.trim();
             const url = usaProxy
                 ? GEMINI_PROXY_URL.trim()
-                : `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+                : `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
 
             const headers = { 'Content-Type': 'application/json' };
             if (usaProxy && PROXY_TOKEN.trim()) headers['X-Proxy-Token'] = PROXY_TOKEN.trim();
@@ -1184,7 +1184,7 @@ ${texto}
                 headers,
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: { responseMimeType: 'application/json', temperature: 0.2, maxOutputTokens: 8192 }
+                    generationConfig: { responseMimeType: 'application/json', temperature: 0.2, maxOutputTokens: 8192, thinkingConfig: { thinkingLevel: 'MINIMAL' } }
                 })
             });
 
