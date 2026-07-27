@@ -988,6 +988,10 @@
             procesandoBitacora = true;
             const btnLeer = document.getElementById('btn-leer-procesar');
             if (btnLeer) btnLeer.disabled = true;
+            // Se reinicia aquí (un solo lugar, antes de cualquiera de los dos métodos de carga)
+            // para que la tabla de "Control Semafórico de Incidentes" no acumule filas de cargas
+            // anteriores ni quede mezclada entre bitácoras distintas.
+            datosPorDia.todos.incidencias = [];
 
             try {
                 const apiKey = GEMINI_API_KEY_FIJA.trim() || localStorage.getItem('gemini_api_key');
@@ -1107,14 +1111,14 @@ ${nombres.join(', ')}
 
 Para cada persona que tenga contenido real en el texto (ignora plantillas vacías), devuelve un objeto con estos campos:
 - "nombre": el nombre de la lista de arriba.
-- "semaforo": "green" (90-100%, sin fallas), "yellow" (70-89%, dificultades menores resueltas), "red" (<70%, bloqueo operativo o tiempo perdido significativo, o bitácora no entregada — busca frases como "NO LA HIZO").
-- "score": porcentaje como texto, ej. "85%". Si no entregó bitácora, "0%".
+- "semaforo": ANTES de asignarlo, busca activamente en TODO el texto de esa persona cualquier mención de: cortes de luz/internet, fallas técnicas, PC congelada/lenta, errores de IA, falta de insumos/herramientas, reuniones que interrumpieron el trabajo, tiempo perdido, retrasos, o cualquier frase bajo "Incidencias"/"⚠️" que no diga explícitamente "sin incidencias". Si encuentras UNA sola incidencia real (aunque sea breve), NO puede ser "green" — como mínimo es "yellow". Reglas: "green" (90-100%, SIN NINGUNA incidencia mencionada en el texto), "yellow" (70-89%, hubo 1-2 incidencias o dificultades pero se resolvieron), "red" (<70%, 3+ incidencias, tiempo perdido significativo ≥120 minutos en total, bloqueo operativo, o bitácora no entregada — busca frases como "NO LA HIZO").
+- "score": porcentaje como texto, ej. "85%". Varía el número según la gravedad real (no uses siempre el mismo número redondo tipo 90% o 95% para todos) — más incidencias o más minutos perdidos = número más bajo dentro de su rango. Si no entregó bitácora, "0%".
 - "resumen": UNA sola oración corta (máx 140 caracteres) tipo "Producción de X piezas/videos/posts para [marcas] durante la semana.", con números reales del texto.
 - "incidencia": máx 110 caracteres. La incidencia más relevante, mencionando el día si se puede. Si no hubo, "Sin incidencias mayores registradas.".
 - "minutosPerdidos": ENTERO con el TOTAL de minutos perdidos por fallas esa semana. Suma CADA mención de tiempo relacionada a un problema, de dos formas: (a) duración explícita: "20 minutos"=20, "1 hora y 49 minutos"=109. (b) rango horario asociado ESPECÍFICAMENTE a la falla: "de 8:40 a 9:00"=20 (la diferencia). Ejemplo: "Falla de 8:40 a 9:00, e interrupción de 2:10 a 2:11" = 20+1 = 21. Revisa TODAS las incidencias de esa persona en toda la semana antes de responder 0. ⚠️ CUIDADO: NO cuentes como "perdido" el horario normal de trabajo (ej. "10:30am-1pm hice tarea X, 2pm-3:30pm hice tarea Y" son bloques de trabajo PRODUCTIVO, no tiempo perdido) — solo cuenta el tiempo que el texto describe explícitamente como afectado por la falla/corte/error, no todos los horarios que aparezcan cerca en el párrafo.
 - "entregables": máximo 3 strings cortos (máx 70 caracteres cada uno).
 - "piezas": texto corto tipo "17 Piezas" con el conteo TOTAL real (súmalos si aparecen por día).
-- "dias": máximo 4 objetos {"dia": "Lunes", "horas": "8:00 AM - 5:00 PM" (o "Jornada reportada"), "detalle": "resumen brevísimo, máx 90 caracteres"}.
+- "dias": máximo 4 objetos {"dia": "Lunes", "horas": "8:00 AM - 5:00 PM" (o "Jornada reportada"), "detalle": "resumen de lo que hizo ese día, máx 320 caracteres — suficiente para entender el trabajo real, no un título genérico de una línea"}.
 - "ruta": ruta de servidor mencionada, o "" si no hay.
 
 Responde ÚNICAMENTE con un JSON válido con esta forma exacta, sin texto adicional, sin markdown, sin \`\`\`:
@@ -1184,7 +1188,7 @@ ${texto}
                 headers,
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: { responseMimeType: 'application/json', temperature: 0.2, maxOutputTokens: 8192, thinkingConfig: { thinkingLevel: 'MINIMAL' } }
+                    generationConfig: { responseMimeType: 'application/json', temperature: 0.2, maxOutputTokens: 8192 }
                 })
             });
 
@@ -1601,8 +1605,8 @@ ${texto}
                         const resumenDia = lineasDia
                             .filter(l => l.length > 8)
                             .filter(l => !(l.length <= 40 && extraerDiaDeLinea(l)))
-                            .map(l => l.length > 220 ? l.slice(0, 217).trim() + '…' : l)
-                            .slice(0, 3)
+                            .map(l => l.length > 400 ? l.slice(0, 397).trim() + '…' : l)
+                            .slice(0, 6)
                             .join(' ');
                         return { dia: nombreDia, horas, detalle: resumenDia || 'Sin detalle adicional registrado.' };
                     });
@@ -1635,6 +1639,49 @@ ${texto}
 
         // Aplica datos ya extraídos (por el parser de texto O por la IA de Gemini) a la ficha de
         // detalle y a la tarjeta de una persona. Único punto de escritura, compartido por ambos métodos.
+        // Texto de incidencia usado como "no hubo nada que reportar" por el analizador de texto
+        // y por el prompt de Gemini — si coincide, no cuenta como incidencia real para la tabla.
+        const TEXTOS_SIN_INCIDENCIA = ['sin incidencias mayores registradas.', 'sin datos cargados.'];
+
+        // Clasificación aproximada por palabras clave, solo para la columna "Categoría" de la
+        // tabla de incidencias (no afecta el semáforo ni el score, que ya vienen calculados).
+        function categorizarIncidencia(textoNorm) {
+            if (contienePalabraClave(textoNorm, ['no la hizo', 'no lo hizo', 'bitacora no', 'no envio bitacora', 'no entrego bitacora'])) return 'Administración';
+            if (contienePalabraClave(textoNorm, ['corte', 'apagon', 'bajon', 'se fue la luz', 'sin luz', 'electric'])) return 'Energía';
+            if (contienePalabraClave(textoNorm, ['pc ', 'congel', 'colgad', 'disco', 'bateria', 'teclado', 'hardware'])) return 'Hardware';
+            if (contienePalabraClave(textoNorm, ['inteligencia artificial', ' ia ', 'prompt', 'gemini', 'higgsfield'])) return 'IA';
+            if (contienePalabraClave(textoNorm, ['internet', 'software', 'error del sistema', 'reinstal', 'error tecnico'])) return 'Software';
+            if (contienePalabraClave(textoNorm, ['falta de insumos', 'falta de material', 'falta de herramientas'])) return 'Producción';
+            if (contienePalabraClave(textoNorm, ['mrw', 'envio', 'logistic'])) return 'Logística';
+            return 'Administración';
+        }
+
+        // Agrega (o reemplaza) la fila de esta persona en la tabla de incidencias, a partir del
+        // texto de incidencia ya calculado por el analizador de texto o por Gemini. Único punto
+        // de escritura para datosPorDia.todos.incidencias, así queda igual sin importar el método.
+        function actualizarFilaIncidencia(nombre, incidenciaTexto, semaforo) {
+            const lista = datosPorDia.todos.incidencias;
+            const idx = lista.findIndex(i => i.afect === nombre);
+            const texto = (incidenciaTexto || '').trim();
+            const esReal = texto && !TEXTOS_SIN_INCIDENCIA.includes(normalizarTexto(texto)) && semaforo !== 'green' && semaforo !== 'gray';
+
+            if (!esReal) {
+                if (idx !== -1) lista.splice(idx, 1);
+                return;
+            }
+
+            const matchDia = texto.match(/^([A-Za-zÀ-ÿ]+(?:\s+\d{1,2})?)\s*:/);
+            const fila = {
+                semaforo,
+                dia: matchDia ? matchDia[1] : 'Semanal',
+                cat: categorizarIncidencia(normalizarTexto(texto)),
+                desc: texto,
+                afect: nombre,
+                sol: 'Pendiente de definir plan de acción.'
+            };
+            if (idx !== -1) lista[idx] = fila; else lista.push(fila);
+        }
+
         function aplicarDatosPersona(nombre, datos) {
             const detalle = detalleIntegrantes[nombre];
             if (!detalle) return false;
@@ -1646,6 +1693,8 @@ ${texto}
             if (datos.ruta) detalle.ruta = datos.ruta;
             if (datos.resumen) detalle.resumen = datos.resumen;
             if (datos.dias && datos.dias.length) detalle.dias = datos.dias;
+
+            actualizarFilaIncidencia(nombre, detalle.incidencia, detalle.semaforo);
 
             const equipoDeEstePersona = EQUIPO_POR_NOMBRE[nombre];
             if (equipoDeEstePersona && datosPorDia.todos[equipoDeEstePersona]) {
