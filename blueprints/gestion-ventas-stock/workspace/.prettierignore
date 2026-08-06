@@ -1,9 +1,0 @@
-.next/
-public/sw.js
-public/workbox-*.js
-public/manifest.json
-pnpm-lock.yaml
-blueprints/
-.claude/skills/**/SKILL.md
-CLAUDE.md
-AGENTS.md
